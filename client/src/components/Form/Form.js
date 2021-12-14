@@ -27,11 +27,10 @@ const Form = () => {
   }
 
   return (
-    <Box action="post" noValidate autoComplete="off">
-      <Navbar />
+    <Box action="post" noValidate autoComplete="off" className={classes.paper}>
       <Grid
         container
-        className={classes.mainContainer}
+        className={`${classes.root} ${classes.form}`}
         justify="space-between"
         alignItems="stretch"
         spacing={3}

@@ -2,25 +2,11 @@ import React from "react";
 
 import Crossword from "./components/crossword/Crossword.js";
 import Navbar from "./components/Navbar.js";
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import Auth from "./components/Auth/Auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import Form from "./components/Form/Form.js";
 const App = () => {
-  // const classes = useStyles();
-  const dancing = createTheme({
-    typography: {
-      fontFamily: ["Dancing Script", "cursive"].join(","),
-    },
-  });
-  //   return (
-  //     <React.Fragment>
-  //       <ThemeProvider theme={dancing}>
-  //         <Navbar />
-  //       </ThemeProvider>
-  //       <Crossword />
-  //     </React.Fragment>
   return (
     <BrowserRouter>
       <Container maxWidth="lg">
@@ -28,10 +14,11 @@ const App = () => {
           <Route
             path="/"
             element={
-              <div>
+              <React.Fragment>
+                <Navbar />
                 <Form />
                 <Crossword />
-              </div>
+              </React.Fragment>
             }
           />
           <Route path="/auth" element={<Auth />} />

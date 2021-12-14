@@ -13,12 +13,14 @@ const Crossword = () => {
     <div>
       <Container>
         <Grid container alignItems="stretch" spacing={3}>
-          <Grid item xs={12} sm={7}>
+          <Grid item xs={2}></Grid>
+          <Grid item xs={12} sm={4}>
             <CrosswordGrid />
           </Grid>
           <Grid item xs={12} sm={4}>
             <Clue />
           </Grid>
+          <Grid item xs={2}></Grid>
         </Grid>
       </Container>
     </div>
