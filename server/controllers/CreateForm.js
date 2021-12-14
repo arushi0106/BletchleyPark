@@ -15,8 +15,8 @@ function myfun(item, index)
     const x=item.split(se);
     var input_json = 
         {
-          clue: `"`+x[0]+`"`,
-          answer: `"`+  x[1] + `"`,
+          clue: x[0],
+          answer:  x[1],
         }
         myjson.push(input_json);
     console.log(x[0]);

@@ -16,7 +16,7 @@ const Form = () => {
         
 
         try {
-            await axios.post("http://localhost:5000/CreateForm",{
+            await axios.post("http://localhost:5000/crossword",{
                 title,clue
             })
         } catch (error) {
