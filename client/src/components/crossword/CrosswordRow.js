@@ -1,6 +1,7 @@
 import React from "react";
-
+import useStyles from "./styles";
 const CrosswordRow = (props) => {
+  const classes = useStyles();
   const numrows = props.data.length;
   let rows = [];
   for (var j = 0; j < numrows; j++) {
@@ -8,7 +9,7 @@ const CrosswordRow = (props) => {
       rows.push(
         <input
           defaultValue={props.data[j]}
-          //   className={styles.input}
+          className={classes.input}
           type="text"
           maxLength="1"
         />
@@ -17,7 +18,7 @@ const CrosswordRow = (props) => {
       rows.push(
         <input
           readOnly
-          //   className={styles.inputBlock}
+          className={classes.inputBlock}
           type="text"
           maxLength="1"
         />

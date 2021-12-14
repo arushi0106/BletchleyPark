@@ -1,19 +1,23 @@
-import React from 'react';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
-import Form from './components/Form/Form.js' 
-// import useStyles from './styles.js';
+import React from "react";
+import Crossword from "./components/crossword/Crossword.js";
+import Navbar from "./components/Navbar.js";
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 
 const App = () => {
-    // const classes = useStyles();
-    return(
-       <Container >
-<AppBar>
-    <Typography variant='H2' align="center">Crossword</Typography>
-</AppBar>
-<br></br>
-<Form></Form>
-       </Container>
-    );
-}
+  // const classes = useStyles();
+  const dancing = createTheme({
+    typography: {
+      fontFamily: ["Dancing Script", "cursive"].join(","),
+    },
+  });
+  return (
+    <React.Fragment>
+      <ThemeProvider theme={dancing}>
+        <Navbar />
+      </ThemeProvider>
+      <Crossword />
+    </React.Fragment>
+  );
+};
 
 export default App;

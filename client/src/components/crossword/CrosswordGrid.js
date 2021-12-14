@@ -1,8 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Container } from "@material-ui/core";
 import CrosswordRow from "./CrosswordRow";
+import useStyles from "./styles";
 
 const CrosswordGrid = () => {
+  const classes = useStyles();
   const crossword = useSelector((state) => state.crossword);
 
   let rows = [];
@@ -17,7 +20,11 @@ const CrosswordGrid = () => {
     console.log(crossword.table.length);
   }
 
-  return <div>{rows}</div>;
+  return (
+    <Container elevation={3} className={classes.paper}>
+      {rows}
+    </Container>
+  );
 };
 
 export default CrosswordGrid;
