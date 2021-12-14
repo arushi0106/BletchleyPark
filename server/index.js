@@ -15,7 +15,7 @@ app.use("/signup", signupRoutes);
 app.use("/crossword", crosswordRoutes);
 
 const CONNECTION_URL =
-  "mongodb+srv://Arushi:<pass>@cluster0.lskvq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://srijan123:srijan123@cluster0.lskvq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 
 mongoose
