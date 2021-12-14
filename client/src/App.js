@@ -1,19 +1,19 @@
-import React from 'react';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
-import Form from './components/Form/Form.js' 
-// import useStyles from './styles.js';
-
+import React from "react";
+import Crossword from "./components/crossword/Crossword";
+import Auth from './components/Auth/Auth';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Container } from "@material-ui/core";
 const App = () => {
-    // const classes = useStyles();
-    return(
-       <Container >
-<AppBar>
-    <Typography variant='H2' align="center">Crossword</Typography>
-</AppBar>
-<br></br>
-<Form></Form>
-       </Container>
-    );
-}
+  return (
+    <BrowserRouter>
+    <Container maxWidth="lg">
+      <Routes>
+        <Route path="/" element={<Crossword/>} />
+        <Route path="/auth" element={<Auth/>} />
+      </Routes>
+    </Container>
+    </BrowserRouter>
+  );
+};
 
 export default App;
