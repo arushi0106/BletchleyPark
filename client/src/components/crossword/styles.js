@@ -6,7 +6,7 @@ export default makeStyles(() => ({
     textAlign: "center",
     textTransform: "uppercase",
     backgroundColor: "white",
-    borderColor: "black",
+    borderColor: "#bdc3c7",
     borderWidth: "1px",
   },
   inputBlock: {
@@ -14,7 +14,7 @@ export default makeStyles(() => ({
     height: "2rem",
     textAlign: "center",
     textTransform: "uppercase",
-    backgroundColor: "black",
+    backgroundColor: "#bdc3c7",
     borderColor: "white",
     borderWidth: "1px",
   },

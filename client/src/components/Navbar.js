@@ -1,17 +1,25 @@
 import React from "react";
 import { AppBar, Container, Typography } from "@material-ui/core";
 
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import useStyles from "./styles";
 const Navbar = () => {
   const classes = useStyles();
+  const dancing = createTheme({
+    typography: {
+      fontFamily: ["Dancing Script", "cursive"].join(","),
+    },
+  });
   return (
-    <Container>
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h3" align="center">
-          Bletchley-Park
-        </Typography>
-      </AppBar>
-    </Container>
+    <ThemeProvider theme={dancing}>
+      <Container>
+        <AppBar className={classes.appBar} position="static" color="inherit">
+          <Typography className={classes.heading} variant="h3" align="center">
+            Bletchley-Park
+          </Typography>
+        </AppBar>
+      </Container>
+    </ThemeProvider>
   );
 };
 
