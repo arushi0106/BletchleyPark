@@ -12,13 +12,13 @@ const Form = () => {
     console.log(title);
     console.log(clue);
 
-    try {
-      await axios.post("http://localhost:5000/CreateForm", {
-        title,
-        clue,
-      });
-    } catch (error) {
-      console.log(error.message);
+        try {
+            await axios.post("http://localhost:5000/crossword",{
+                title,clue
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
     }
   }
 
