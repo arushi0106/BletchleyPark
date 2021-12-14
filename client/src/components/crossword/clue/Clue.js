@@ -6,11 +6,13 @@ const Clue = () => {
   const clues = crossword.result;
   let down = [],
     across = [];
-  for (var i = 0; i < clues.length; i++) {
-    if (clues[i].orientation === "down") {
-      down.push(<p>{clues[i].clue}</p>);
-    } else {
-      across.push(<p>{clues[i].clue}</p>);
+  if (clues) {
+    for (var i = 0; i < clues.length; i++) {
+      if (clues[i].orientation === "down") {
+        down.push(<p>{clues[i].clue}</p>);
+      } else {
+        across.push(<p>{clues[i].clue}</p>);
+      }
     }
   }
   return (
