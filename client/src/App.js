@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import Crossword from "./components/crossword/Crossword";
 
 const App = () => {
-    return(
-        <div>
-            <h1> HEllo</h1>
-        </div>
-    );
-}
+  return (
+    <div>
+      <Crossword />
+    </div>
+  );
+};
 
 export default App;
