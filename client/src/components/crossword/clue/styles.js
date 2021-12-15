@@ -4,7 +4,7 @@ export default makeStyles(() => ({
     marginBottom: "10px",
   },
   cardBody: {
-    height: "20rem",
+    maxHeight: "20rem",
     width: "20rem",
     overflow: "scroll",
   },

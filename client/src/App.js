@@ -17,7 +17,7 @@ const App = () => {
               <React.Fragment>
                 <Navbar />
                 <Form />
-                <Crossword />
+                {/* <Crossword /> */}
               </React.Fragment>
             }
           />

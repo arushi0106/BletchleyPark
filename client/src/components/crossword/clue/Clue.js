@@ -34,7 +34,7 @@ const Clue = () => {
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h5">Across</Typography>
-          <Typography variant="p" className={classes.cardBody}>
+          <Typography variant="body2" className={classes.cardBody}>
             {across}
           </Typography>
         </CardContent>
@@ -42,7 +42,7 @@ const Clue = () => {
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h5">Down</Typography>
-          <Typography variant="p" className={classes.cardBody}>
+          <Typography variant="body2" className={classes.cardBody}>
             {down}
           </Typography>
         </CardContent>
