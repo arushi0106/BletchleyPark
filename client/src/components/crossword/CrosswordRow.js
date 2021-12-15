@@ -16,7 +16,7 @@ const CrosswordRow = (props) => {
         <input
           size="small"
           id="margin-none"
-          defaultValue={props.data[j]}
+          // defaultValue={props.data[j]}
           className={classes.input}
           // variant="outlined"
           label={y}
