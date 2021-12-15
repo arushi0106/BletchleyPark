@@ -27,17 +27,6 @@ const Form = () => {
   const [showButton, setShowButton] = useState(0);
   const helperText = "press enter \u23CE";
 
-  async function SubmitForm(event) {
-    event.preventDefault();
-    console.log("form submitted");
-    console.log(crosswordInput);
-    // dispatch(
-    //   createCrossword({
-    //     crosswordInput,
-    //   })
-    // );
-  }
-
   return (
     <Box action="post" noValidate autoComplete="off" className={classes.paper}>
       <Grid
@@ -121,20 +110,6 @@ const Form = () => {
               showButton={showButton}
               setCrosswordInput={setShowButton}
             />
-          )}
-          {showButton ? (
-            <Button
-              className={classes.buttonSubmit}
-              variant="contained"
-              size="large"
-              type="submit"
-              onClick={SubmitForm}
-              fullWidth
-            >
-              Submit
-            </Button>
-          ) : (
-            ``
           )}
         </Grid>
         <Grid item sm={3} xs={0}></Grid>
