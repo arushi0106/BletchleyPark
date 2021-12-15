@@ -1,14 +1,10 @@
 import { Container, Grid } from "@material-ui/core";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createCrossword } from "../../actions/crossword";
+import React from "react";
 import CrosswordGrid from "./CrosswordGrid";
 import Clue from "./clue/Clue";
 // import Navbar from "../Navbar";
 
 const Crossword = () => {
-  const dispatch = useDispatch();
-
   return (
     <div>
       <Container>

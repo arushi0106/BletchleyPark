@@ -8,7 +8,7 @@ const CrosswordRow = (props) => {
     if (props.data[j] !== "-")
       rows.push(
         <input
-          defaultValue={props.data[j]}
+          // defaultValue={props.data[j]}
           className={classes.input}
           type="text"
           maxLength="1"
@@ -18,6 +18,7 @@ const CrosswordRow = (props) => {
       rows.push(
         <input
           readOnly
+          // defaultValue={" "}
           className={classes.inputBlock}
           type="text"
           maxLength="1"

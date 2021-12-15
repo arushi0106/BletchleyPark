@@ -4,7 +4,7 @@ import clg from "crossword-layout-generator";
 
 export const createCrossword = async (req, res) => {
   console.log(req.body);
-  const data = req.body.clue;
+  const data = req.body.words;
 
   const re = /\s*(?:;|$)\s*/;
   const nameList = data.split(re);
