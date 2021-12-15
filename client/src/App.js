@@ -21,6 +21,16 @@ const App = () => {
               </React.Fragment>
             }
           />
+          <Route
+            path="/crossword"
+            element={
+              <React.Fragment>
+                <Navbar />
+                {/* <Form /> */}
+                <Crossword />
+              </React.Fragment>
+            }
+          />
           <Route path="/auth" element={<Auth />} />
         </Routes>
       </Container>
