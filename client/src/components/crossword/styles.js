@@ -1,8 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles(() => ({
+  container: { paddingTop: "3rem" },
   input: {
-    maxWidth: "2rem",
-    height: "2rem",
+    width: "3rem",
+    height: "3rem",
     textAlign: "center",
     textTransform: "uppercase",
     backgroundColor: "white",
@@ -10,8 +11,8 @@ export default makeStyles(() => ({
     borderWidth: "1px",
   },
   inputBlock: {
-    maxWidth: "2rem",
-    height: "2rem",
+    width: "3rem",
+    height: "3rem",
     textAlign: "center",
     textTransform: "uppercase",
     backgroundColor: "#bdc3c7",

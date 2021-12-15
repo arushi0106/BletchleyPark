@@ -13,8 +13,8 @@ const Navbar = () => {
   return (
     <ThemeProvider theme={dancing}>
       <Container>
-        <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h3" align="center">
+        <AppBar className={classes.appBar}>
+          <Typography className={classes.heading} variant="h5">
             Bletchley-Park
           </Typography>
         </AppBar>
