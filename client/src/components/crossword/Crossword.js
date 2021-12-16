@@ -4,12 +4,12 @@ import CrosswordGrid from "./CrosswordGrid";
 import { useSelector } from "react-redux";
 import Clue from "./clue/Clue";
 import useStyles from "./styles.js";
-// import Navbar from "../Navbar";
 
 const Crossword = () => {
   const classes = useStyles();
-  const crossword = useSelector((state) => state.crossword);
 
+  const crossword = useSelector((state) => state.crossword);
+  console.log(crossword);
   const [table, setTable] = useState(
     Array(crossword.table.length)
       .fill("-")
