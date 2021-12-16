@@ -32,6 +32,7 @@ const Crossword = () => {
     );
   }
   return (
+   
     <div>
       <Container className={classes.container}>
         <Grid container alignItems="stretch" spacing={3}>
@@ -50,6 +51,7 @@ const Crossword = () => {
         </Grid>
       </Container>
     </div>
+  
   );
 };
 
