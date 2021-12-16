@@ -1,15 +1,16 @@
 import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles(() => ({
   appBar: {
-    borderRadius: 5,
-    // margin: "30px 0",
+    marginBottom: "20px",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "#00b894",
+    color: "white",
+    padding: "1rem",
   },
   heading: {
     color: "#2d3436",
+    color: "white",
   },
   image: {
     marginLeft: "15px",
