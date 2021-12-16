@@ -1,7 +1,10 @@
 import React from "react";
 import { TextField, Alert, Button } from "@mui/material";
 import { useState } from "react/cjs/react.development";
+import { useDispatch } from "react-redux";
+import { createCrossword } from "../../../actions/crossword";
 const Words = ({
+  title,
   count,
   setCrosswordInput,
   crosswordInput,
@@ -18,10 +21,18 @@ const Words = ({
     clue: "",
     answer: "",
   });
+  const dispatch = useDispatch();
   const [words, setWords] = useState([]);
 
   const [error, setError] = useState(-1);
   const SubmitForm = () => {
+    console.log("submit");
+    console.log(words);
+    dispatch(
+      createCrossword({
+        words,title,
+      })
+    );
     //Words bhej de bus peeche
   };
   return (

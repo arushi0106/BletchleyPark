@@ -101,6 +101,7 @@ const Form = () => {
             ``
           ) : (
             <Words
+            title={title}
               setCrosswordInput={setCrosswordInput}
               crosswordInput={crosswordInput}
               setCount={setCount}
