@@ -1,4 +1,4 @@
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Paper, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import CrosswordGrid from "./CrosswordGrid";
 import { useSelector } from "react-redux";
@@ -7,7 +7,7 @@ import useStyles from "./styles.js";
 
 const Crossword = () => {
   const classes = useStyles();
-
+  const user = JSON.parse(localStorage.getItem('profile'));
   const crossword = useSelector((state) => state.crossword);
   console.log(crossword);
   const [table, setTable] = useState(
@@ -22,6 +22,15 @@ const Crossword = () => {
     position[res.startx - 1][res.starty - 1] = res.position;
   });
   console.log(position);
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own Crossword.
+        </Typography>
+      </Paper>
+    );
+  }
   return (
     <div>
       <Container className={classes.container}>

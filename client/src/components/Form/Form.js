@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
 import { Container, FormHelperText } from "@mui/material";
 import Select from "@mui/material/Select";
-import { Grid, Box, Button } from "@material-ui/core";
+import { Grid, Box, Button, Paper } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { createCrossword } from "../../actions/crossword";
 import useStyles from "./styles";
@@ -16,6 +16,7 @@ import { hide } from "@popperjs/core";
 import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const user = JSON.parse(localStorage.getItem('profile'));
   const history = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -39,7 +40,15 @@ const Form = () => {
     setAccessibiliy(e.target.value);
     setCount(count + 1);
   };
-
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own Crossword.
+        </Typography>
+      </Paper>
+    );
+  }
   return (
     <Box action="post" noValidate autoComplete="off" className={classes.paper}>
       <Grid
