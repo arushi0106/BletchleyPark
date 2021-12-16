@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
-import { FormHelperText } from "@mui/material";
+import { Container, FormHelperText } from "@mui/material";
 import Select from "@mui/material/Select";
 import { Grid, Box, Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
@@ -13,19 +13,32 @@ import { createCrossword } from "../../actions/crossword";
 import useStyles from "./styles";
 import Words from "./Words/Words";
 import { hide } from "@popperjs/core";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const history = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [crosswordInput, setCrosswordInput] = useState({
-    privacy: "public",
-    words: [],
-  });
-
+  const [accessibiliy, setAccessibiliy] = useState();
   const [title, setTitle] = useState("Create your own Crossword");
   const [count, setCount] = useState(0);
   const [showButton, setShowButton] = useState(0);
+  const [words, setWords] = useState([]);
   const helperText = "press enter \u23CE";
+  const submitHandler = () => {
+    dispatch(createCrossword([...words]));
+    history("/crossword");
+  };
+  const submitTitle = (e) => {
+    if (e.keyCode == 13) {
+      setTitle(e.target.value);
+      // setCount(count + 1);
+    }
+  };
+  const submitAccessibility = (e) => {
+    setAccessibiliy(e.target.value);
+    setCount(count + 1);
+  };
 
   return (
     <Box action="post" noValidate autoComplete="off" className={classes.paper}>
@@ -42,27 +55,27 @@ const Form = () => {
             {title}
           </Typography>
           <Typography>
-            {crosswordInput.words.length > 0 ? "clue 1" : ``}
+            {words.length > 0 ? (
+              <Container>
+                {words.map((word) => (
+                  <Grid>
+                    {word.answer} &nbsp; &nbsp; {word.clue}
+                  </Grid>
+                ))}
+              </Container>
+            ) : (
+              ``
+            )}
           </Typography>
           {title === "Create your own Crossword" ? (
             <TextField
               id="standard-basic"
               label="Title"
-              // value={title}
               placeholder="Adam & Eve"
               variant="outlined"
               fullWidth
               helperText={`Give your crossword a title and ${helperText}`}
-              onKeyDown={(e) => {
-                if (e.keyCode == 13) {
-                  setCrosswordInput({
-                    ...crosswordInput,
-                    title: e.target.value,
-                  });
-                  setTitle(e.target.value);
-                  // setCount(count + 1);
-                }
-              }}
+              onKeyDown={submitTitle}
             />
           ) : (
             ``
@@ -76,24 +89,15 @@ const Form = () => {
               </InputLabel>
               <Select
                 margin="normal"
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
                 label="Accessibility"
                 variant="outlined"
-                onChange={(e) => {
-                  setCrosswordInput({
-                    ...crosswordInput,
-                    privacy: e.target.value,
-                  });
-                  setCount(count + 1);
-                }}
+                onChange={submitAccessibility}
               >
                 <MenuItem value="public">Public</MenuItem>
                 <MenuItem value="private">Private</MenuItem>
               </Select>
               <FormHelperText>
                 Wanna hide your masterpiece from the world or show it off?
-                Decide and {helperText}
               </FormHelperText>
             </FormControl>
           )}
@@ -101,14 +105,13 @@ const Form = () => {
             ``
           ) : (
             <Words
-              setCrosswordInput={setCrosswordInput}
-              crosswordInput={crosswordInput}
               setCount={setCount}
               count={count}
-              words={crosswordInput.words}
               helperText={helperText}
               showButton={showButton}
-              setCrosswordInput={setShowButton}
+              words={words}
+              setWords={setWords}
+              submitHandler={submitHandler}
             />
           )}
         </Grid>

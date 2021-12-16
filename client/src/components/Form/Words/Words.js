@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField, Alert, Button } from "@mui/material";
-import { useState } from "react/cjs/react.development";
+import { useDispatch } from "react-redux";
+import { createCrossword } from "../../../api/crossword";
+
 const Words = ({
   count,
   setCrosswordInput,
   crosswordInput,
   setCount,
-  // words,
+  words,
+  setWords,
   helperText,
   showButton,
   setShowButton,
+  submitHandler,
 }) => {
+  const dispatch = useDispatch();
   const clueLabel = `Clue ${count}`;
   const answerLabel = `Word ${count}`;
   const [entered, setEntered] = useState(0);
@@ -18,11 +23,13 @@ const Words = ({
     clue: "",
     answer: "",
   });
-  const [words, setWords] = useState([]);
 
   const [error, setError] = useState(-1);
   const SubmitForm = () => {
-    //Words bhej de bus peeche
+    setWords([...words, word]);
+    setEntered(0);
+    setCount(count + 1);
+    submitHandler();
   };
   return (
     <React.Fragment>
@@ -84,30 +91,36 @@ const Words = ({
         ``
       )}
       {entered === 2 ? (
-        <Button
-          onClick={() => {
-            console.log(word);
-            setWords([...words, word]);
-            setEntered(0);
-            console.log(words);
-            setCount(count + 1);
-          }}
-        >
-          AddMore
-        </Button>
+        <div>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => {
+              console.log(word);
+              setWords([...words, word]);
+              setEntered(0);
+              console.log(words);
+              setCount(count + 1);
+              // const x = words;
+              // dispatch(createCrossword(x));
+            }}
+          >
+            Add More Words?
+          </Button>
+          &nbsp; OR &nbsp;
+          <Button
+            // className={classes.buttonSubmit}
+            variant="contained"
+            size="large"
+            type="submit"
+            onClick={SubmitForm}
+          >
+            Create Crossword
+          </Button>
+        </div>
       ) : (
         ``
       )}
-      <Button
-        // className={classes.buttonSubmit}
-        variant="contained"
-        size="large"
-        type="submit"
-        onClick={SubmitForm}
-        fullWidth
-      >
-        Submit
-      </Button>
     </React.Fragment>
   );
 };
