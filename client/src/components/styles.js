@@ -18,4 +18,7 @@ export default makeStyles(() => ({
   mainContainer: {
     flexDirection: "column-reverse",
   },
+  profilw: {
+    marginLeft:'auto',
+  },
 }));
