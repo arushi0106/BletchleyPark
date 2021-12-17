@@ -9,11 +9,10 @@ const CrosswordGrid = ({ table, setTable, position }) => {
   const classes = useStyles();
   const crossword = useSelector((state) => state.crossword);
   let rows = [];
+
+  const [status, setStatus] = useState(-1);
   if (crossword.table && crossword.table.length > 0) {
     const numrows = crossword.table.length;
-
-    const data = crossword.table[1];
-    console.log(data);
     for (var i = 0; i < numrows; i++) {
       const data = crossword.table[i];
       rows.push(
@@ -23,12 +22,12 @@ const CrosswordGrid = ({ table, setTable, position }) => {
           table={table}
           setTable={setTable}
           position={position}
+          setStatus={setStatus}
         />
       );
     }
     console.log(crossword.table.length);
   }
-  const [status, setStatus] = useState(-1);
   const submitHandler = () => {
     console.log(table);
     console.log(crossword.table);

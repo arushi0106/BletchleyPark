@@ -19,4 +19,7 @@ export default makeStyles(() => ({
     borderColor: "white",
     borderWidth: "1px",
   },
+  pdf: {
+    paddingTop: "10rem",
+  },
 }));
