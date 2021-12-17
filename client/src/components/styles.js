@@ -1,15 +1,14 @@
 import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles(() => ({
   appBar: {
-    marginBottom: "20px",
+    // marginBottom: "20px",
     display: "flex",
     flexDirection: "row",
     backgroundColor: "#00b894",
     color: "white",
-    padding: "1rem",
+    // padding: "1rem",
   },
   heading: {
-    color: "#2d3436",
     color: "white",
   },
   image: {
@@ -18,7 +17,11 @@ export default makeStyles(() => ({
   mainContainer: {
     flexDirection: "column-reverse",
   },
-  profilw: {
-    marginLeft:'auto',
+  profile: {
+    display: "flex",
+  },
+  button: {
+    backgroundColor: "white",
+    color: "black",
   },
 }));
