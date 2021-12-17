@@ -12,8 +12,6 @@ const CrosswordGrid = ({ table, setTable, position }) => {
   if (crossword.table && crossword.table.length > 0) {
     const numrows = crossword.table.length;
 
-    const data = crossword.table[1];
-    console.log(data);
     for (var i = 0; i < numrows; i++) {
       const data = crossword.table[i];
       rows.push(

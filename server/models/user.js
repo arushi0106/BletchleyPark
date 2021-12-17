@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+import Crossword from './crossword.js';
 const userSchema = mongoose.Schema({
     name: {
         type: String,
@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema({
     id: {
         type:String
     },
+    crossword: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Crossword' }],
 })
 
 var User = mongoose.model('User', userSchema);
