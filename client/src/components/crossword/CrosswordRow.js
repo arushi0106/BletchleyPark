@@ -9,23 +9,22 @@ const CrosswordRow = (props) => {
     if (props.data[j] !== "-") {
       const x = j;
       let y = " ";
-      if (props.position[props.start][x] !== "") {
-        y = props.position[props.start][x];
-      }
+      // if (props.position[props.start][x] !== "") {
+      //   y = props.position[props.start][x];
+      // }
       rows.push(
         <input
           size="small"
           id="margin-none"
-          // defaultValue={props.data[j]}
           className={classes.input}
-          // variant="outlined"
           label={y}
           type="text"
           maxLength="1"
           onChange={(e) => {
-            const newTable = [...props.table];
+            const newTable = props.table;
             newTable[props.start][x] = e.target.value.toLowerCase();
             props.setTable(newTable);
+            props.setStatus(-1);
           }}
         />
       );

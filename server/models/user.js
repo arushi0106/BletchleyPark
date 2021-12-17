@@ -1,25 +1,24 @@
-import mongoose from 'mongoose';
-import Crossword from './crossword.js';
+import mongoose from "mongoose";
+
 const userSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    
-    password:{
-        type:String,
-        required:true
-    },
-    id: {
-        type:String
-    },
-    crossword: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Crossword' }],
-})
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
 
-var User = mongoose.model('User', userSchema);
+  password: {
+    type: String,
+    required: true,
+  },
+  id: {
+    type: String,
+  },
+});
 
-export default User
+var User = mongoose.model("User", userSchema);
+
+export default User;

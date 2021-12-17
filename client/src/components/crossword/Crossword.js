@@ -7,21 +7,23 @@ import useStyles from "./styles.js";
 
 const Crossword = () => {
   const classes = useStyles();
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const user = JSON.parse(localStorage.getItem("profile"));
   const crossword = useSelector((state) => state.crossword);
   console.log(crossword);
+  let l = crossword.table.length;
+  let w = crossword.table[0].length;
   const [table, setTable] = useState(
-    Array(crossword.table.length)
+    Array(l)
       .fill("-")
-      .map(() => new Array(crossword.table[0].length).fill("-"))
+      .map(() => new Array(w).fill("-"))
   );
-  let position = Array(crossword.table.length)
+
+  let position = Array(l)
     .fill("")
-    .map(() => new Array(crossword.table[0].length).fill(""));
+    .map(() => new Array(w).fill(""));
   crossword.result.map((res) => {
     position[res.startx - 1][res.starty - 1] = res.position;
   });
-  console.log(position);
   if (!user?.result?.name) {
     return (
       <Paper className={classes.paper}>
@@ -33,26 +35,24 @@ const Crossword = () => {
   }
   
   return (
-   
     <div>
       <Container className={classes.container}>
         <Grid container alignItems="stretch" spacing={3}>
           <Grid item xs={2}></Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <CrosswordGrid
               table={table}
               setTable={setTable}
               position={position}
             />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <Clue />
           </Grid>
           <Grid item xs={2}></Grid>
         </Grid>
       </Container>
     </div>
-  
   );
 };
 
