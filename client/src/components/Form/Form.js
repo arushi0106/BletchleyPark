@@ -27,7 +27,8 @@ const Form = () => {
   const [words, setWords] = useState([]);
   const helperText = "press enter \u23CE";
   const submitHandler = () => {
-    dispatch(createCrossword({ words, title, accessibiliy }));
+    console.log(user);
+    dispatch(createCrossword({ words, title, accessibiliy, user }));
     history("/crossword");
   };
   const submitTitle = (e) => {
