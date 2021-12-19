@@ -6,7 +6,6 @@ export default makeStyles(() => ({
     flexDirection: "row",
     backgroundColor: "#00b894",
     color: "white",
-    // padding: "1rem",
   },
   heading: {
     color: "white",

@@ -56,17 +56,8 @@ const Navbar = () => {
 
   return (
     <Container>
-      <AppBar position="absolute">
+      <AppBar>
         <Toolbar className={classes.appBar}>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <ThemeProvider theme={dancing}>
             <Typography
               className={classes.heading}
@@ -97,25 +88,14 @@ const Navbar = () => {
               </ThemeProvider>
             </div>
           ) : (
-            <>
-              <Button
-                component={Link}
-                to="/auth"
-                variant="contained"
-                sx={{ mr: 2 }}
-              >
-                Sign In
-              </Button>
-
-              <Button
-                component={Link}
-                to="/auth"
-                variant="contained"
-                sx={{ mr: 2 }}
-              >
-                Login
-              </Button>
-            </>
+            <Button
+              component={Link}
+              to="/auth"
+              variant="contained"
+              sx={{ mr: 2 }}
+            >
+              Sign In
+            </Button>
           )}
         </Toolbar>
       </AppBar>
