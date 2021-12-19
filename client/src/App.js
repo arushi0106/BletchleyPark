@@ -8,7 +8,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import Form from "./components/Form/Form.js";
 import useStyles from "./components/crossword/styles";
-const ref = React.createRef();
+import MyCrossword from "./components/crossword/finalcross.js"
+// const ref = React.createRef();
 const App = () => {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -25,23 +26,23 @@ const App = () => {
                 {/* <Crossword /> */}
               </React.Fragment>
             }
+
           />
           <Route
             path="/crossword"
             element={
               <React.Fragment>
                 {/* <Form /> */}
-
-                <ReactToPdf targetRef={ref} filename="crossword.pdf">
+              <MyCrossword></MyCrossword>
+                {/* <ReactToPdf targetRef={ref} filename="crossword.pdf">
                   {({ toPdf }) => (
-                    <button onClick={toPdf} className={classes.pdf}>
-                      Generate pdf
-                    </button>
+                    <button onClick={toPdf}>Generate pdf</button>
                   )}
                 </ReactToPdf>
                 <div ref={ref}>
                   <Crossword />
-                </div>
+                </div> */}
+
               </React.Fragment>
             }
           />
