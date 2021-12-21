@@ -1,6 +1,7 @@
 import { Container, Grid, Paper, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import CrosswordGrid from "./CrosswordGrid";
+import Timer from "./timer.js"
 import { useSelector } from "react-redux";
 import Clue from "./clue/Clue";
 import useStyles from "./styles.js";
@@ -37,6 +38,8 @@ const Crossword = () => {
   return (
     <div>
       <Container className={classes.container}>
+        
+      <Timer />
         <Grid container alignItems="stretch" spacing={3}>
           <Grid item xs={2}></Grid>
           <Grid item xs={12} md={4}>
