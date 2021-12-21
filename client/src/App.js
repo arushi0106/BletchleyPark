@@ -8,8 +8,12 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import Form from "./components/Form/Form.js";
 import useStyles from "./components/crossword/styles";
+
+import Dashboard from "./components/Dashboard/Dashboard.js";
+const ref = React.createRef();
+
 import MyCrossword from "./components/crossword/finalcross.js"
-// const ref = React.createRef();
+
 const App = () => {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -18,16 +22,8 @@ const App = () => {
       <Container maxWidth="lg">
         <Navbar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <React.Fragment>
-                <Form />
-                {/* <Crossword /> */}
-              </React.Fragment>
-            }
+          <Route path="/" element={<Form />} />
 
-          />
           <Route
             path="/crossword"
             element={
@@ -46,6 +42,7 @@ const App = () => {
               </React.Fragment>
             }
           />
+          <Route path="/dashboard" element={<Dashboard />} />
 
           <Route path="/auth" element={<Auth />} />
           {/* <Route path="/auth" exact component={() => (!user ? <Auth /> : <Navigate to="/" />)} /> */}
