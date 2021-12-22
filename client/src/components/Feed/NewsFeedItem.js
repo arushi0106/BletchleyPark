@@ -1,5 +1,6 @@
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
+// import { Button } from "@material-ui/core";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
@@ -7,12 +8,24 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { Divider, Typography, ListItem, Avatar } from "@mui/material";
 import React, { useState } from "react";
-const NewsFeedItem = () => {
+import { Button } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import {playCrossword} from "../../actions/playcrossword.js"
+import { useNavigate } from "react-router-dom";
+const NewsFeedItem = ({title, words}) => {
   const [open, setOpen] = useState(false);
-
+  const navigate= useNavigate();
+  const dispatch = useDispatch();
   const handleClick = () => {
     setOpen(!open);
   };
+
+  const Playcross = () => {
+
+    dispatch(playCrossword({title,words}));
+    navigate("/crossword")
+  }
   return (
     <div>
       <ListItemButton onClick={handleClick}>
@@ -23,7 +36,7 @@ const NewsFeedItem = () => {
         >
           A
         </Avatar>
-        <ListItemText primary="Fruits" />
+        <ListItemText primary={title} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
@@ -78,6 +91,9 @@ const NewsFeedItem = () => {
                 </React.Fragment>
               }
             />
+          </ListItem>
+          <ListItem>
+           <Button onClick={Playcross}>play</Button>
           </ListItem>
         </List>
       </Collapse>

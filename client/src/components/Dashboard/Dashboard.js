@@ -16,7 +16,7 @@ export default function NestedList() {
     console.log(user.result._id);
     dispatch(getdashboard(user.result._id));
   }, []);
-  const newsfeed = useSelector((state) => state.newsfeed);
+  const dashboard = useSelector((state) => state.dashboard);
 
   return (
     <div className={classes.container}>
@@ -30,7 +30,7 @@ export default function NestedList() {
           </ListSubheader>
         }
       >
-        {newsfeed.map((data) => {
+        {dashboard.map((data) => {
           return <DashboardFile title={data.title} />;
         })}
       </List>

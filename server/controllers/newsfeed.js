@@ -12,7 +12,7 @@ export const getnewsfeed =  (req, res) => {
             cross = Crosswords;
             res.send(cross);
         }
-        console.log(cross);
+        // console.log(cross);
 
 
     })

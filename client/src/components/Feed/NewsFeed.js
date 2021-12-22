@@ -10,10 +10,19 @@ import React, { useState } from "react";
 import useStyles from "./styles";
 import NewsFeedItem from "./NewsFeedItem";
 import NewsFeedSpecialItem from "./NewsFeedSpecialItem";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { getnewsfeed } from "../../actions/newsfeed.js";
 
 const NewsFeed = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
+
+  const newsfeed = useSelector((state) => state.newsfeed);
+  React.useEffect(() => {
+    dispatch(getnewsfeed());
+  }, [newsfeed]);
   return (
     <div className={classes.container}>
       <List
@@ -27,9 +36,10 @@ const NewsFeed = () => {
         }
       >
         <NewsFeedSpecialItem />
-        <NewsFeedItem />
-        <NewsFeedItem />
-        <NewsFeedItem />
+        {newsfeed.map((data) => {
+          return <NewsFeedItem title={data.title} words={data.words} />;
+        })}
+
       </List>
     </div>
   );

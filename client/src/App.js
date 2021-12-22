@@ -9,7 +9,6 @@ import { Container } from "@material-ui/core";
 import Form from "./components/Form/Form.js";
 import useStyles from "./components/crossword/styles";
 import MyCrossword from "./components/crossword/finalcross.js";
-import Newsfeed from "./components/newsfeed/Newsfeed";
 import Dashboard from "./components/Dashboard/Dashboard.js";
 import NewsFeed from "./components/Feed/NewsFeed.js";
 const ref = React.createRef();
