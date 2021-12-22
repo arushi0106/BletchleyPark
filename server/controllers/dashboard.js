@@ -4,7 +4,7 @@ export const getdashboard = (req, res) => {
   // res.send("dashboard");
   console.log("inside dashboard");
   console.log(req.params.id);
-  Crossword.find({}, function (err, Crosswords) {
+  Crossword.find({userid:req.params.id}, function (err, Crosswords) {
     if (err) {
       cross = "error";
     } else if (!Crosswords) {
