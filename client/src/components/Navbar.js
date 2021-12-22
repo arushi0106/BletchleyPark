@@ -36,9 +36,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
-
     navigate("/");
-
     setUser(null);
   };
 
@@ -56,7 +54,7 @@ const Navbar = () => {
 
   return (
     <Container>
-      <AppBar>
+      <AppBar position="absolute">
         <Toolbar className={classes.appBar}>
           <ThemeProvider theme={dancing}>
             <Typography
@@ -70,6 +68,36 @@ const Navbar = () => {
           </ThemeProvider>
           {user?.result ? (
             <div className={classes.profile}>
+              <ThemeProvider theme={whiteTheme}>
+                <Button
+                  color="inherit"
+                  onClick={() => navigate("/dashboard")}
+                  className={classes.button}
+                >
+                  Dashboard
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => navigate("/feed")}
+                  className={classes.button}
+                >
+                  Practice
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={logout}
+                  className={classes.button}
+                >
+                  Compete
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={logout}
+                  className={classes.button}
+                >
+                  Logout
+                </Button>
+              </ThemeProvider>
               <Avatar
                 alt={user?.result.name}
                 src={user?.result.imageUrl}
@@ -77,15 +105,6 @@ const Navbar = () => {
               >
                 {user?.result.name.charAt(0)}
               </Avatar>
-              <ThemeProvider theme={whiteTheme}>
-                <Button
-                  variant="contained"
-                  onClick={logout}
-                  className={classes.button}
-                >
-                  Logout
-                </Button>
-              </ThemeProvider>
             </div>
           ) : (
             <Button
