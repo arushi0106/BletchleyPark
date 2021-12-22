@@ -13,10 +13,24 @@ import StarBorder from "@mui/icons-material/StarBorder";
 import { Divider, Typography, ListItem } from "@mui/material";
 import React, { useState } from "react";
 import useStyles from "./styles";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import DashboardFile from "./DashboardFile";
+// import { getnewsfeed } from "../../../../server/controllers/newsfeed";
+import {getnewsfeed} from "../../actions/newsfeed.js"
+import {getdashboard} from "../../actions/dashboard"
 
 export default function NestedList() {
+  const user = JSON.parse(localStorage.getItem('profile'));
   const classes = useStyles();
+  const dispatch = useDispatch();
+ 
+  React.useEffect(() => {
+    console.log(user);
+    dispatch(getdashboard({user}));
+   
+  }, []);
+  const newsfeed = useSelector((state) => state.newsfeed);
   const titles = ["Fruits", "Adam & Eve", "Singers"];
   return (
     <div className={classes.container}>
@@ -30,8 +44,8 @@ export default function NestedList() {
           </ListSubheader>
         }
       >
-        {titles.map((title) => {
-          return <DashboardFile title={title} />;
+        {newsfeed.map((data) => {
+          return <DashboardFile title={data.title} />;
         })}
       </List>
     </div>
