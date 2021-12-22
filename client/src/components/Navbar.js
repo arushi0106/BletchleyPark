@@ -78,7 +78,7 @@ const Navbar = () => {
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={() => navigate("/feed")}
+                  onClick={() => navigate("/newsfeed")}
                   className={classes.button}
                 >
                   Practice

@@ -10,6 +10,7 @@ import Form from "./components/Form/Form.js";
 import useStyles from "./components/crossword/styles";
 import MyCrossword from "./components/crossword/finalcross.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
+import NewsFeed from "./components/Feed/NewsFeed.js";
 const ref = React.createRef();
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/form" element={<Form />} />
           <Route path="/crossword" element={<MyCrossword />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/newsfeed" element={<NewsFeed />} />
           <Route path="/auth" element={<Auth />} />
         </Routes>
       </Container>
