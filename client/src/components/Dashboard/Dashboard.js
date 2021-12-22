@@ -10,21 +10,18 @@ import SendIcon from "@mui/icons-material/Send";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
-import { useState } from "react";
+import { Divider, Typography, ListItem } from "@mui/material";
+import React, { useState } from "react";
 import useStyles from "./styles";
+import DashboardFile from "./DashboardFile";
 
 export default function NestedList() {
   const classes = useStyles();
-  const [open, setOpen] = useState(true);
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
+  const titles = ["Fruits", "Adam & Eve", "Singers"];
   return (
     <div className={classes.container}>
       <List
-        sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+        sx={{ width: "100%", bgcolor: "background.paper" }}
         component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={
@@ -33,20 +30,9 @@ export default function NestedList() {
           </ListSubheader>
         }
       >
-        <ListItemButton onClick={handleClick}>
-          <ListItemText primary="Inbox" />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="Starred" />
-            </ListItemButton>
-          </List>
-        </Collapse>
+        {titles.map((title) => {
+          return <DashboardFile title={title} />;
+        })}
       </List>
     </div>
   );
