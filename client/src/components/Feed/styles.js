@@ -4,7 +4,10 @@ export default makeStyles(() => ({
   container: {
     paddingTop: "4rem",
   },
-  vertical: {
-    borderLeft: "solid",
+  special: {
+    backgroundColor: "#00b894",
+    color: "white",
+    borderRadius: "10px",
+    marginBottom: "10px",
   },
 }));

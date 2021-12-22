@@ -5,8 +5,6 @@ import useStyles from "./styles";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import DashboardFile from "./DashboardFile";
-// import { getnewsfeed } from "../../../../server/controllers/newsfeed";
-import { getnewsfeed } from "../../actions/newsfeed.js";
 import { getdashboard } from "../../actions/dashboard";
 
 export default function NestedList() {
@@ -19,7 +17,7 @@ export default function NestedList() {
     dispatch(getdashboard(user.result._id));
   }, []);
   const newsfeed = useSelector((state) => state.newsfeed);
-  const titles = ["Fruits", "Adam & Eve", "Singers"];
+
   return (
     <div className={classes.container}>
       <List
