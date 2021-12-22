@@ -17,7 +17,7 @@ const Crossword = () => {
   }
   else{
     let presentDate = new Date();
-    let startDate = new Date(presentDate-20000); //fetched date
+    let startDate = new Date(presentDate-24*60*60*1000); //fetched date
     startTime = new Date(presentDate-startDate).getTime() //(Time we received)
   }
   const [time,setTime]=React.useState(startTime);
