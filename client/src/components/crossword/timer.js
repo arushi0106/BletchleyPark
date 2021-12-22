@@ -2,9 +2,8 @@ import { Container, Grid, Paper, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import useStyles from "./styles.js";
 
-const Timer=()=> {
-    const [time,setTime]=React.useState(0);
-    const [timerOn,setTimeOn]=React.useState(false);
+const Timer=({time,timerOn,setTimeOn,setTime})=> {
+    
     React.useEffect(()=>{
         let interval=null;
         if(timerOn) {
