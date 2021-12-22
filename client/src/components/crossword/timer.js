@@ -4,7 +4,7 @@ import useStyles from "./styles.js";
 
 const Timer=()=> {
     const [time,setTime]=React.useState(0);
-    const [timerOn,setTimeOn]=React.useState(false);
+    const [timerOn,setTimeOn]=React.useState(true);
     React.useEffect(()=>{
         let interval=null;
         if(timerOn) {
@@ -25,10 +25,10 @@ const Timer=()=> {
             <span>{("0"+((time/10)%100)).slice(-2)}</span>
         </div>
         <div>
-            <button onClick={()=>setTimeOn(true)}>Start</button>
+            {/* <button onClick={()=>setTimeOn(true)}>Start</button>
             <button onClick={()=>setTimeOn(false)}>Stop</button>
             <button onClick={()=>setTimeOn(true)}>Resume</button>
-            <button onClick={()=>setTime (0)}>Reset</button>
+            <button onClick={()=>setTime (0)}>Reset</button> */}
         </div>
         </div>
     );
