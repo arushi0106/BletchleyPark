@@ -9,7 +9,10 @@ import { Container } from "@material-ui/core";
 import Form from "./components/Form/Form.js";
 import useStyles from "./components/crossword/styles";
 import MyCrossword from "./components/crossword/finalcross.js"
+<<<<<<< HEAD
+=======
 
+>>>>>>> a05f4523ed2fe492b1867d6d6f4a9893ffe5847a
 import Dashboard from "./components/Dashboard/Dashboard.js";
 const ref = React.createRef();
 

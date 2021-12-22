@@ -5,7 +5,7 @@ import Alert from "@mui/material/Alert";
 import CrosswordRow from "./CrosswordRow";
 import useStyles from "./styles";
 
-const CrosswordGrid = ({ table, setTable, position }) => {
+const CrosswordGrid = ({ table, setTable, position,setTimeOn, time }) => {
   const classes = useStyles();
   const crossword = useSelector((state) => state.crossword);
   let rows = [];
@@ -36,11 +36,13 @@ const CrosswordGrid = ({ table, setTable, position }) => {
         if (table[i][j] !== crossword.table[i][j]) {
           console.log("err");
           setStatus(0);
+          
           return;
         }
       }
     }
-    console.log("corr");
+    console.log(time); //Send this to backend on correct
+    setTimeOn(false);
     setStatus(1);
   };
   return (
