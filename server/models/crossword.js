@@ -9,7 +9,7 @@ const crosswordSchema = mongoose.Schema({
     answer: String,
     clue: String,
   }],
-  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  userid: String,
 });
 
 const Crossword = mongoose.model("Crossword", crosswordSchema);
