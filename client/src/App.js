@@ -20,29 +20,11 @@ const App = () => {
       <Container maxWidth="lg">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Form />} />
-
-          <Route
-            path="/crossword"
-            element={
-              <React.Fragment>
-                {/* <Form /> */}
-                <MyCrossword></MyCrossword>
-                {/* <ReactToPdf targetRef={ref} filename="crossword.pdf">
-                  {({ toPdf }) => (
-                    <button onClick={toPdf}>Generate pdf</button>
-                  )}
-                </ReactToPdf>
-                <div ref={ref}>
-                  <Crossword />
-                </div> */}
-              </React.Fragment>
-            }
-          />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/crossword" element={<MyCrossword />} />
           <Route path="/dashboard" element={<Dashboard />} />
-
           <Route path="/auth" element={<Auth />} />
-          {/* <Route path="/auth" exact component={() => (!user ? <Auth /> : <Navigate to="/" />)} /> */}
         </Routes>
       </Container>
     </BrowserRouter>
