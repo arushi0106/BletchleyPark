@@ -1,7 +1,7 @@
 import { Container, Grid, Paper, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import CrosswordGrid from "./CrosswordGrid";
-import Timer from "./timer.js"
+import Timer from "./timer.js";
 import { useSelector } from "react-redux";
 import Clue from "./clue/Clue";
 import useStyles from "./styles.js";
@@ -9,19 +9,18 @@ import useStyles from "./styles.js";
 const Crossword = () => {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
-  //Fetch this from backend: 
-  let start = 5;
+  //Fetch this from backend:
+  let start = null;
   let startTime;
-  if(start==null){
+  if (start == null) {
     startTime = 0;
-  }
-  else{
+  } else {
     let presentDate = new Date();
-    let startDate = new Date(presentDate-24*60*60*1000); //fetched date
-    startTime = new Date(presentDate-startDate).getTime() //(Time we received)
+    let startDate = new Date(presentDate - 24 * 60 * 60 * 1000); //fetched date
+    startTime = new Date(presentDate - startDate).getTime(); //(Time we received)
   }
-  const [time,setTime]=React.useState(startTime);
-  const [timerOn,setTimeOn]=React.useState(true);
+  const [time, setTime] = React.useState(startTime);
+  const [timerOn, setTimeOn] = React.useState(true);
   const crossword = useSelector((state) => state.crossword);
   let l = crossword.table.length;
   let w = crossword.table[0].length;
@@ -46,12 +45,16 @@ const Crossword = () => {
       </Paper>
     );
   }
-  
+
   return (
     <div>
       <Container className={classes.container}>
-        
-      <Timer time={time} setTime={setTime} timerOn={timerOn} setTimeOn={setTimeOn}/>
+        <Timer
+          time={time}
+          setTime={setTime}
+          timerOn={timerOn}
+          setTimeOn={setTimeOn}
+        />
         <Grid container alignItems="stretch" spacing={3}>
           <Grid item xs={2}></Grid>
           <Grid item xs={12} md={4}>
@@ -60,7 +63,7 @@ const Crossword = () => {
               setTable={setTable}
               position={position}
               setTimeOn={setTimeOn}
-              time={time} 
+              time={time}
             />
           </Grid>
           <Grid item xs={12} md={4}>

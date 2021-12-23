@@ -9,6 +9,7 @@ import { Divider, Typography, ListItem, Avatar } from "@mui/material";
 import React, { useState } from "react";
 import useStyles from "./styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { teal } from "@mui/material/colors";
 const NewsFeedItem = () => {
   const [open, setOpen] = useState(false);
   const classes = useStyles();
@@ -18,6 +19,13 @@ const NewsFeedItem = () => {
   const emphasis = createTheme({
     typography: {
       fontFamily: ["Moo Lah Lah", "cursive"].join(","),
+    },
+  });
+  const whiteTheme = createTheme({
+    palette: {
+      primary: {
+        main: teal[50],
+      },
     },
   });
   return (
