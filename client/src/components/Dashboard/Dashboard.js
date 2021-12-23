@@ -8,6 +8,8 @@ import DashboardFile from "./DashboardFile";
 import { getdashboard } from "../../actions/dashboard";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import {Paper } from "@material-ui/core";
 
 export default function NestedList() {
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -15,11 +17,19 @@ export default function NestedList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   React.useEffect(() => {
-    console.log(user.result._id);
-    dispatch(getdashboard(user.result._id));
+    console.log(user?.result?._id);
+    dispatch(getdashboard(user?.result?._id));
   }, []);
   const dashboard = useSelector((state) => state.dashboard);
-
+  if (user?.result?.email==undefined) {
+    return (
+      <div className={classes.container}>
+        <Typography variant="h6" align="center">
+          Please Sign In to see your Dashboard.
+        </Typography>
+      </div>
+    );
+  }
   return (
     <div className={classes.container}>
       <Button
