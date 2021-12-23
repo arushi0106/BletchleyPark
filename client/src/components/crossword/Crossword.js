@@ -39,13 +39,13 @@ const Crossword = () => {
   crossword.result.map((res) => {
     position[res.startx - 1][res.starty - 1] = res.position;
   });
-  if (!user?.result?.name) {
+  if (user?.result?.email==undefined) {
     return (
-      <Paper className={classes.paper}>
+      <div className={classes.container}>
         <Typography variant="h6" align="center">
           Please Sign In to create your own Crossword.
         </Typography>
-      </Paper>
+      </div>
     );
   }
 

@@ -27,6 +27,16 @@ const rows = [
 
 export default function DataTable() {
   const classes = useStyles();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  if (user?.result?.email==undefined) {
+    return (
+      <div className={classes.container}>
+        <Typography variant="h6" align="center">
+          Please Sign In to see Leaderboard.
+        </Typography>
+      </div>
+    );
+  }
   return (
     <div style={{ height: 400, width: "100%" }} className={classes.container}>
       <Typography>Leaderboard</Typography>
