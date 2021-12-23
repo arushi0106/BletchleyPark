@@ -6,12 +6,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import DashboardFile from "./DashboardFile";
 import { getdashboard } from "../../actions/dashboard";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function NestedList() {
   const user = JSON.parse(localStorage.getItem("profile"));
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   React.useEffect(() => {
     console.log(user.result._id);
     dispatch(getdashboard(user.result._id));
@@ -20,6 +22,13 @@ export default function NestedList() {
 
   return (
     <div className={classes.container}>
+      <Button
+        onClick={() => {
+          navigate("/form");
+        }}
+      >
+        Create New Crossword
+      </Button>
       <List
         sx={{ width: "100%", bgcolor: "background.paper" }}
         component="nav"

@@ -11,6 +11,8 @@ import useStyles from "./components/crossword/styles";
 import MyCrossword from "./components/crossword/finalcross.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
 import NewsFeed from "./components/Feed/NewsFeed.js";
+import Leaderboard from "./components/Leaderboard/Leaderboard.js";
+import HomePage from "./components/HomePage.js";
 const ref = React.createRef();
 
 const App = () => {
@@ -21,12 +23,14 @@ const App = () => {
       <Container maxWidth="lg">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/form" element={<Form />} />
           <Route path="/crossword" element={<MyCrossword />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/newsfeed" element={<NewsFeed />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </Container>
     </BrowserRouter>

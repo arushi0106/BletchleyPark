@@ -14,20 +14,12 @@ import decode from "jwt-decode";
 import * as actionType from "../constants/actionTypes";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import useStyles from "./styles";
-import { teal, blue } from "@mui/material/colors";
 
 const Navbar = () => {
   const classes = useStyles();
   const dancing = createTheme({
     typography: {
       fontFamily: ["Dancing Script", "cursive"].join(","),
-    },
-  });
-  const whiteTheme = createTheme({
-    palette: {
-      primary: {
-        main: teal[50],
-      },
     },
   });
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -68,7 +60,7 @@ const Navbar = () => {
           </ThemeProvider>
           {user?.result ? (
             <div className={classes.profile}>
-              <ThemeProvider theme={whiteTheme}>
+              <div>
                 <Button
                   color="inherit"
                   onClick={() => navigate("/dashboard")}
@@ -85,7 +77,7 @@ const Navbar = () => {
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={logout}
+                  onClick={() => navigate("/leaderboard")}
                   className={classes.button}
                 >
                   Compete
@@ -97,7 +89,7 @@ const Navbar = () => {
                 >
                   Logout
                 </Button>
-              </ThemeProvider>
+              </div>
               <Avatar
                 alt={user?.result.name}
                 src={user?.result.imageUrl}
