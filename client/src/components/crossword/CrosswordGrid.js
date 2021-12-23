@@ -31,8 +31,8 @@ const CrosswordGrid = ({ table, setTable, position,setTimeOn, time }) => {
   const submitHandler = () => {
     console.log(table);
     console.log(crossword.table);
-    for (var i = 0; i < table.length; i++) {
-      for (var j = 0; j < table[i].length; j++) {
+    for (var i = 0; i < crossword.table.length; i++) {
+      for (var j = 0; j < crossword.table[i].length; j++) {
         if (table[i][j] !== crossword.table[i][j]) {
           console.log("err");
           setStatus(0);

@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const timerSchema = mongoose.Schema({
     starttime:String,
-    endtime:String,
+    startdate:String,
+    totaltime:String,
     userid:String,
     crossid:String,
   });

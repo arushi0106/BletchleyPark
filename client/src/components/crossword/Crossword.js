@@ -9,25 +9,30 @@ import useStyles from "./styles.js";
 const Crossword = () => {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
+  const crossword = useSelector((state) => state.crossword);
   //Fetch this from backend: 
-  let start = 5;
+  // let start = 5;
   let startTime;
-  if (start == null) {
+  if (crossword.date == null) {
     startTime = 0;
   }
   else {
     let presentDate = new Date();
-    let startDate = new Date(presentDate - 24 * 60 * 60 * 1000); //fetched date
-    startTime = new Date(presentDate - startDate).getTime() //(Time we received)
+    console.log(presentDate);
+    let startDate = crossword.date //fetched date
+    let currdate = new Date(crossword.date);
+    console.log(currdate);
+    console.log(presentDate.getTime());
+    // console.log(startDate.getTime());
+    startTime = presentDate.getTime() - currdate.getTime() //(Time we received)
+    console.log(startTime);
+    console.log(crossword);
   }
   const [time, setTime] = React.useState(startTime);
   const [timerOn, setTimeOn] = React.useState(true);
-  const crossword = useSelector((state) => state.crossword);
-  console.log(crossword);
   while (!crossword.table) {
    ; 
   }
-
 
     let l = crossword.table.length;
     let w = crossword.table[0].length;

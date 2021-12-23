@@ -13,17 +13,20 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {playCrossword} from "../../actions/playcrossword.js"
 import { useNavigate } from "react-router-dom";
-const NewsFeedItem = ({title, words}) => {
+const NewsFeedItem = ({title, words, id}) => {
   const [open, setOpen] = useState(false);
   const navigate= useNavigate();
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  let Userid=user.result._id;
+  // console.log(user);
   const handleClick = () => {
     setOpen(!open);
   };
 
   const Playcross = () => {
 
-    dispatch(playCrossword({title,words}));
+    dispatch(playCrossword({title,words,id,Userid}));
     navigate("/crossword")
   }
   return (

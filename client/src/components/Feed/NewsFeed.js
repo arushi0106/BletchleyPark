@@ -37,7 +37,7 @@ const NewsFeed = () => {
       >
         <NewsFeedSpecialItem />
         {newsfeed.map((data) => {
-          return <NewsFeedItem title={data.title} words={data.words} />;
+          return <NewsFeedItem title={data.title} words={data.words} id={data._id} />;
         })}
 
       </List>
