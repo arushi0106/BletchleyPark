@@ -22,6 +22,9 @@ const Crossword = () => {
   const [time, setTime] = React.useState(startTime);
   const [timerOn, setTimeOn] = React.useState(true);
   const crossword = useSelector((state) => state.crossword);
+  console.log(crossword);
+  while (!crossword.table) {}
+
   let l = crossword.table.length;
   let w = crossword.table[0].length;
   const [table, setTable] = useState(
