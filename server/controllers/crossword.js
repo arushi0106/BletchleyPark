@@ -33,6 +33,13 @@ export const playCrossword = async (req, res) => {
     };
   });
   const layout = await clg.generateLayout(words);
+  let position = Array(layout.rows)
+    .fill("")
+    .map(() => new Array(layout.cols).fill(""));
+  layout.result.map((res) => {
+    position[res.starty - 1][res.startx - 1] = res.position;
+  });
+  layout.position = position;
   let time;
   timer.findOne({ userid: userid, crossid: crossid }, function (err, timers) {
     if (err) {
@@ -81,16 +88,12 @@ export const submitCrossword = async (req, res) => {
       console.log(doc);
     }
   );
-  timer.find({crossid:crosswordid}, function(err,timers)
-  {
-    if(err)
-    {
+  timer.find({ crossid: crosswordid }, function (err, timers) {
+    if (err) {
       console.log("error");
       res.send("reached");
-    }
-    else{
+    } else {
       res.send(timers);
     }
-  })
-  
+  });
 };

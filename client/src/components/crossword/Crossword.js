@@ -15,7 +15,7 @@ const Crossword = () => {
   let startTime;
   const [time, setTime] = React.useState(0);
   const [table, setTable] = React.useState([]);
-  const [position, setPosition] = React.useState([]);
+  const [position, setPosition] = React.useState(crossword.positon);
   const [timerOn, setTimeOn] = React.useState(true);
   React.useEffect(() => {
     if (crossword.date == null) {
@@ -41,18 +41,9 @@ const Crossword = () => {
         .fill("-")
         .map(() => new Array(w).fill("-"))
     );
-
-    setPosition(
-      Array(l)
-        .fill("")
-        .map(() => new Array(w).fill(""))
-    );
-    // setPosition(
-    //   crossword.result.map((res) => {
-    //     position[res.startx - 1][res.starty - 1] = res.position;
-    //   })
-    // );
-  }, [crossword.date]);
+    setPosition(crossword.position);
+    console.log(position);
+  }, [crossword]);
 
   if (user?.result?.email == undefined) {
     return (
