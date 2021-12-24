@@ -9,17 +9,14 @@ const CrosswordRow = (props) => {
     if (props.data[j] !== "-") {
       const x = j;
       let y = " ";
-      if (props.positon && props.position[props.start][x] !== "") {
-        y = props.position[props.start][x];
-      }
+      // if (props.position[props.start][x] !== "") {
+      //   y = props.position[props.start][x];
+      // }
       rows.push(
-        <TextField
-          id="outlined-read-only-input"
-          // defaultValue="Hello World"
+        <input
           size="small"
           id="margin-none"
           className={classes.input}
-          variant="outlined"
           label={y}
           type="text"
           maxLength="1"
@@ -33,15 +30,10 @@ const CrosswordRow = (props) => {
       );
     } else
       rows.push(
-        <TextField
-          disabled
-          id="outlined-disabled"
+        <input
           size="small"
           id="margin-none"
-          // className={classes.input}
-          variant="filled"
-          label="Disabled"
-          id="margin-none"
+          readOnly
           // variant="outlined"
           label=" "
           // defaultValue={" "}

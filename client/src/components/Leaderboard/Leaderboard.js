@@ -2,6 +2,9 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import useStyles from "./styles.js";
 import { Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import {submitCrossword} from "../../actions/playcrossword.js"
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", width: 1000 },
@@ -28,6 +31,7 @@ const rows = [
 export default function DataTable() {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
+  const leaderboard = useSelector((state) => state.leaderboard);
   if (user?.result?.email==undefined) {
     return (
       <div className={classes.container}>

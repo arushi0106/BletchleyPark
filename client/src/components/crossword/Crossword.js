@@ -14,26 +14,27 @@ const Crossword = () => {
   // let start = 5;
   let startTime;
   const [time, setTime] = React.useState(0);
-  if (crossword.date == null) {
-    startTime = 0;
-  } else {
-    let presentDate = new Date();
-    console.log(presentDate);
-    let startDate = crossword.date; //fetched date
-    let currdate = new Date(crossword.date);
-    console.log(currdate);
-    console.log(presentDate.getTime());
-    // console.log(startDate.getTime());
-    startTime = presentDate.getTime() - currdate.getTime(); //(Time we received)
-    console.log(startTime);
-
-    console.log(crossword);
-  }
+ 
 
   const [timerOn, setTimeOn] = React.useState(true);
   React.useEffect(() => {
+    if (crossword.date == null) {
+      startTime = 0;
+    } else {
+      let presentDate = new Date();
+      console.log(presentDate);
+      let startDate = crossword.date; //fetched date
+      let currdate = new Date(crossword.date);
+      console.log(currdate);
+      console.log(presentDate.getTime());
+      // console.log(startDate.getTime());
+      startTime = presentDate.getTime() - currdate.getTime(); //(Time we received)
+      console.log(startTime);
+  
+      console.log(crossword);
+    }
     setTime(startTime);
-  }, [startTime]);
+  }, [startTime,crossword.date]);
   while (!crossword.table) {}
 
   let l = crossword.table.length;

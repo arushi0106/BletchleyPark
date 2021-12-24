@@ -70,7 +70,7 @@ export const submitCrossword = async (req, res) => {
   let crosswordid = req.body.crosswordId;
   let time = req.body.time;
   timer.findOneAndUpdate(
-    { userid: userid, crosswordid: crosswordid },
+    { userid: userid, crossid: crosswordid },
     { $set: { totaltime: time } },
     { new: true },
     (err, doc) => {
@@ -81,5 +81,16 @@ export const submitCrossword = async (req, res) => {
       console.log(doc);
     }
   );
-  res.send("reached");
+  timer.find({crossid:crosswordid}, function(err,timers)
+  {
+    if(err)
+    {
+      console.log("error");
+      res.send("reached");
+    }
+    else{
+      res.send(timers);
+    }
+  })
+  
 };

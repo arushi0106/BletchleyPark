@@ -15,6 +15,7 @@ export const submitCrossword = (timer) => async (dispatch) => {
   try {
     const { data } = await api.submitCrossword(timer);
     console.log(data);
+    dispatch({ type: "FETCH_LEADERBOARD", payload: data });
   } catch (error) {
     console.log(error);
   }

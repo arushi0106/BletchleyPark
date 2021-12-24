@@ -4,11 +4,14 @@ import { Button, Container } from "@material-ui/core";
 import Alert from "@mui/material/Alert";
 import CrosswordRow from "./CrosswordRow";
 import useStyles from "./styles";
+import { useNavigate } from "react-router-dom";
 import { submitCrossword } from "../../actions/playcrossword";
+import { Navigate } from "react-router-dom";
 
 const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const navigate= useNavigate();
   const user = JSON.parse(localStorage.getItem("profile"));
   const crossword = useSelector((state) => state.crossword);
   let rows = [];
@@ -47,6 +50,8 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
     };
     dispatch(submitCrossword(data));
     setStatus(1);
+    Navigate("/leaderboard");
+    
   };
   return (
     <Container elevation={3} className={classes.paper}>
