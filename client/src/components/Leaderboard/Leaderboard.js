@@ -6,10 +6,10 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {submitCrossword} from "../../actions/playcrossword.js"
 const columns = [
-  { field: "_id", headerName: "ID", width: 70 },
-  { field: "Username", headerName: "Name", width: 1000 },
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "name", headerName: "Name", width: 1000 },
   {
-    field: "totaltime",
+    field: "time",
     headerName: "Time",
     type: "string",
     width: 90,
@@ -44,6 +44,7 @@ export default function DataTable() {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
   const leaderboard = useSelector((state) => state.leaderboard);
+  console.log(leaderboard);
   const rows=leaderboard;
   console.log(leaderboard);
   if (user?.result?.email==undefined) {

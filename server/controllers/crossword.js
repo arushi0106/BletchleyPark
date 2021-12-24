@@ -95,7 +95,13 @@ export const submitCrossword = async (req, res) => {
       console.log("error");
       res.send("reached");
     } else {
-      res.send(timers);
+    const t=  timers.map(function(row){
+        return{
+          id:row._id,name:row.Username,time:row.totaltime,
+        }
+      })
+      console.log(t);
+      res.send(t);
     }
   });
 };

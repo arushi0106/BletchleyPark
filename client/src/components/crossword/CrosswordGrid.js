@@ -33,7 +33,7 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       );
     }
   }
-  const submitHandler = (e) => {
+  const SubmitHandler = (e) => {
     e.preventDefault();
     console.log(e);
     for (var i = 0; i < crossword.table.length; i++) {
@@ -52,7 +52,7 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
     };
     dispatch(submitCrossword(data));
     setStatus(1);
-    Navigate("/leaderboard");
+    navigate("/leaderboard");
   };
   return (
     <Box
@@ -62,7 +62,7 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       className={classes.paper}
     >
       {rows}
-      <Button onClick={submitHandler}>Check</Button>
+      <Button onClick={SubmitHandler}>Check</Button>
       {status === 1 ? (
         <Alert
           oseverity="success"
