@@ -62,7 +62,13 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       className={classes.paper}
     >
       {rows}
-      <Button onClick={SubmitHandler}>Check</Button>
+      <Button
+        variant="contained"
+        className={classes.submit}
+        onClick={SubmitHandler}
+      >
+        Check
+      </Button>
       {status === 1 ? (
         <Alert
           oseverity="success"

@@ -9,7 +9,7 @@ import { getdashboard } from "../../actions/dashboard";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import {Paper } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 
 export default function NestedList() {
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -21,7 +21,7 @@ export default function NestedList() {
     dispatch(getdashboard(user?.result?._id));
   }, []);
   const dashboard = useSelector((state) => state.dashboard);
-  if (user?.result?.email==undefined) {
+  if (user?.result?.email == undefined) {
     return (
       <div className={classes.container}>
         <Typography variant="h6" align="center">
@@ -32,13 +32,6 @@ export default function NestedList() {
   }
   return (
     <div className={classes.container}>
-      <Button
-        onClick={() => {
-          navigate("/form");
-        }}
-      >
-        Create New Crossword
-      </Button>
       <List
         sx={{ width: "100%", bgcolor: "background.paper" }}
         component="nav"
@@ -49,6 +42,16 @@ export default function NestedList() {
           </ListSubheader>
         }
       >
+        <Button
+          variant="contained"
+          fullWidth
+          className={classes.submit}
+          onClick={() => {
+            navigate("/form");
+          }}
+        >
+          Create New Crossword
+        </Button>
         {dashboard.map((data) => {
           return <DashboardFile title={data.title} />;
         })}

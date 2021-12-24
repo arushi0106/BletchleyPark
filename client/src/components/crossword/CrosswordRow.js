@@ -9,7 +9,7 @@ const CrosswordRow = (props) => {
   console.log(crossword.position);
   let rows = [];
   for (var j = 0; j < numrows; j++) {
-    if (props.data[j] !== "-") {
+    if (props.data[j] !== "-" && props.data[j] != ".") {
       const x = j;
       let y = "";
       if (crossword.position && crossword.position[props.start][x] !== "") {

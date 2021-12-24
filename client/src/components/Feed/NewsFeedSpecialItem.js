@@ -9,12 +9,19 @@ import { Divider, Typography, ListItem, Avatar } from "@mui/material";
 import React, { useState } from "react";
 import useStyles from "./styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { getContest } from "../../actions/contest";
+import { useDispatch } from "react-redux";
 import { teal } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 const NewsFeedItem = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const classes = useStyles();
   const handleClick = () => {
     setOpen(!open);
+    dispatch(getContest());
+    navigate("/crossword");
   };
   const emphasis = createTheme({
     typography: {

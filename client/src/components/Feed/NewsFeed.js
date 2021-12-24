@@ -1,11 +1,6 @@
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import { Divider, Typography, ListItem, Avatar} from "@mui/material";
+import { Pagination, Typography } from "@mui/material";
 import React, { useState } from "react";
 import useStyles from "./styles";
 import NewsFeedItem from "./NewsFeedItem";
@@ -15,7 +10,7 @@ import { useSelector } from "react-redux";
 import { getnewsfeed } from "../../actions/newsfeed.js";
 import { useNavigate } from "react-router-dom";
 const NewsFeed = () => {
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const user = JSON.parse(localStorage.getItem("profile"));
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useNavigate();
@@ -24,7 +19,7 @@ const NewsFeed = () => {
   React.useEffect(() => {
     dispatch(getnewsfeed());
   }, [newsfeed]);
-  if (user?.result?.email==undefined) {
+  if (user?.result?.email == undefined) {
     return (
       <div className={classes.container}>
         <Typography variant="h6" align="center">
@@ -47,9 +42,11 @@ const NewsFeed = () => {
       >
         <NewsFeedSpecialItem />
         {newsfeed.map((data) => {
-          return <NewsFeedItem title={data.title} words={data.words} id={data._id} />;
+          return (
+            <NewsFeedItem title={data.title} words={data.words} id={data._id} />
+          );
         })}
-
+        <Pagination count={10} />
       </List>
     </div>
   );

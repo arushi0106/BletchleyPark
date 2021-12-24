@@ -2,17 +2,30 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import useStyles from "./styles";
-const MainText = () => {
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+const MainText = ({ variant, text, className }) => {
   const classes = useStyles();
   const z = createTheme({
     typography: {
-      fontFamily: ["Rock 3D", "cursive"].join(","),
+      fontFamily: ["Syncopate", "cursive"].join(","),
     },
   });
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+    AOS.refresh();
+  }, []);
   return (
     <ThemeProvider theme={z}>
-      <Typography variant="h1" className={classes.special}>
-        Welcome to Bletchley Park{" "}
+      <Typography
+        data-aos="zoom-in-up"
+        variant={variant}
+        className={classes.special}
+      >
+        {text}
       </Typography>
     </ThemeProvider>
   );

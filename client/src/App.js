@@ -12,7 +12,7 @@ import MyCrossword from "./components/crossword/finalcross.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
 import NewsFeed from "./components/Feed/NewsFeed.js";
 import Leaderboard from "./components/Leaderboard/Leaderboard.js";
-import HomePage from "./components/HomePage.js";
+import HomePage from "./components/HomePage/HomePage.js";
 const ref = React.createRef();
 
 const App = () => {

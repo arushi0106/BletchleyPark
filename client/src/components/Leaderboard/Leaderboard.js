@@ -4,7 +4,7 @@ import useStyles from "./styles.js";
 import { Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import {submitCrossword} from "../../actions/playcrossword.js"
+import { submitCrossword } from "../../actions/playcrossword.js";
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", width: 1000 },
@@ -39,15 +39,14 @@ const columns = [
 //   __v: 0
 // }]
 
-
 export default function DataTable() {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
   const leaderboard = useSelector((state) => state.leaderboard);
   console.log(leaderboard);
-  const rows=leaderboard;
+  const rows = leaderboard;
   console.log(leaderboard);
-  if (user?.result?.email==undefined) {
+  if (user?.result?.email == undefined) {
     return (
       <div className={classes.container}>
         <Typography variant="h6" align="center">
@@ -62,8 +61,8 @@ export default function DataTable() {
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={25}
+        rowsPerPageOptions={[25]}
         checkboxSelection
       />
     </div>
