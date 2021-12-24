@@ -11,7 +11,7 @@ const HomePage = () => {
   const classes = useStyles();
   const dancing = createTheme({
     typography: {
-      fontFamily: ["Pushster", "cursive"].join(","),
+      fontFamily: ["Danc", "cursive"].join(","),
     },
   });
   return (
