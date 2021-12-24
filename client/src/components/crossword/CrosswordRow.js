@@ -1,23 +1,27 @@
 import { TextField, Box } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
 import useStyles from "./styles";
 const CrosswordRow = (props) => {
   const classes = useStyles();
   const numrows = props.data.length;
+  const crossword = useSelector((state) => state.crossword);
+  console.log(crossword.position);
   let rows = [];
   for (var j = 0; j < numrows; j++) {
     if (props.data[j] !== "-") {
       const x = j;
-      let y = " ";
-      // if (props.position[props.start][x] !== "") {
-      //   y = props.position[props.start][x];
-      // }
+      let y = "";
+      if (crossword.position && crossword.position[props.start][x] !== "") {
+        y = crossword.position[props.start][x];
+      }
+      // console.log(props.position);
       rows.push(
         <input
           size="small"
           id={`${props.start} ${j}`}
           className={classes.input}
-          label={y}
+          placeholder={y}
           type="text"
           maxLength="1"
           onChange={(e) => {
