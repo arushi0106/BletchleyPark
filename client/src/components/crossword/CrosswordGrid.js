@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Container } from "@material-ui/core";
 import Alert from "@mui/material/Alert";
 import CrosswordRow from "./CrosswordRow";
 import useStyles from "./styles";
+import { submitCrossword } from "../../actions/playcrossword";
 
-const CrosswordGrid = ({ table, setTable, position,setTimeOn, time }) => {
+const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
   const crossword = useSelector((state) => state.crossword);
   let rows = [];
 
@@ -26,23 +29,23 @@ const CrosswordGrid = ({ table, setTable, position,setTimeOn, time }) => {
         />
       );
     }
-    console.log(crossword.table.length);
   }
   const submitHandler = () => {
-    console.log(table);
-    console.log(crossword.table);
     for (var i = 0; i < crossword.table.length; i++) {
       for (var j = 0; j < crossword.table[i].length; j++) {
         if (table[i][j] !== crossword.table[i][j]) {
-          console.log("err");
           setStatus(0);
-          
           return;
         }
       }
     }
-    console.log(time); //Send this to backend on correct
     setTimeOn(false);
+    let data = {
+      time: time,
+      userId: user.result._id,
+      crosswordId: crossword._id,
+    };
+    dispatch(submitCrossword(data));
     setStatus(1);
   };
   return (

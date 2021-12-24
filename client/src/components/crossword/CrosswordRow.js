@@ -1,4 +1,4 @@
-import { TextField } from "@material-ui/core";
+import { TextField, Box } from "@mui/material";
 import React from "react";
 import useStyles from "./styles";
 const CrosswordRow = (props) => {
@@ -9,14 +9,17 @@ const CrosswordRow = (props) => {
     if (props.data[j] !== "-") {
       const x = j;
       let y = " ";
-      // if (props.position[props.start][x] !== "") {
-      //   y = props.position[props.start][x];
-      // }
+      if (props.positon && props.position[props.start][x] !== "") {
+        y = props.position[props.start][x];
+      }
       rows.push(
-        <input
+        <TextField
+          id="outlined-read-only-input"
+          // defaultValue="Hello World"
           size="small"
           id="margin-none"
           className={classes.input}
+          variant="outlined"
           label={y}
           type="text"
           maxLength="1"
@@ -30,10 +33,15 @@ const CrosswordRow = (props) => {
       );
     } else
       rows.push(
-        <input
+        <TextField
+          disabled
+          id="outlined-disabled"
           size="small"
           id="margin-none"
-          readOnly
+          // className={classes.input}
+          variant="filled"
+          label="Disabled"
+          id="margin-none"
           // variant="outlined"
           label=" "
           // defaultValue={" "}
@@ -44,7 +52,11 @@ const CrosswordRow = (props) => {
       );
   }
 
-  return <div>{rows}</div>;
+  return (
+    <Box component="form" noValidate autoComplete="off">
+      {rows}
+    </Box>
+  );
 };
 
 export default CrosswordRow;

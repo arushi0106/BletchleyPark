@@ -10,3 +10,12 @@ export const playCrossword = (cross) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const submitCrossword = (timer) => async (dispatch) => {
+  try {
+    const { data } = await api.submitCrossword(timer);
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
