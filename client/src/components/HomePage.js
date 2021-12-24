@@ -11,7 +11,7 @@ const HomePage = () => {
   const classes = useStyles();
   const dancing = createTheme({
     typography: {
-      fontFamily: ["Danc", "cursive"].join(","),
+      fontFamily: ["Dancing Script", "cursive"].join(","),
     },
   });
   return (
@@ -50,6 +50,12 @@ const HomePage = () => {
           4. Have fun crossword solving sessions with your friends
         </Typography>
         <img src={friends} />
+      </Container>
+      <Container className={classes.container}>
+        <Typography variant="h5">And more to come</Typography>
+      </Container>
+      <Container className={classes.container}>
+        <Typography variant="h5"></Typography>
       </Container>
     </div>
   );

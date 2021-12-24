@@ -1,31 +1,49 @@
-import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+import {
+  exportComponentAsJPEG,
+  exportComponentAsPDF,
+  exportComponentAsPNG,
+} from "react-component-export-image";
 // import Footer from './Footer';
-import Crossword from './Crossword.js';
-import React, { useRef } from 'react';
-
+import { Button } from "@material-ui/core";
+import Crossword from "./Crossword.js";
+import React, { useRef } from "react";
+import useStyles from "./styles";
 const ComponentToPrint = React.forwardRef((props, ref) => (
-    // <Footer ref={ref}></Footer>
+  // <Footer ref={ref}></Footer>
   <div ref={ref}>
-      <Crossword/>
-     </div>
+    <Crossword />
+  </div>
 ));
 
 const MyCrossword = () => {
+  const classes = useStyles();
   const componentRef = useRef();
 
   return (
-    <React.Fragment>
+    <div>
       <ComponentToPrint ref={componentRef} />
-      <button onClick={() => exportComponentAsJPEG(componentRef)}>
+      <Button
+        variant="contained"
+        className={classes.submit}
+        onClick={() => exportComponentAsJPEG(componentRef)}
+      >
         Export As JPEG
-      </button>
-      <button onClick={() => exportComponentAsPDF(componentRef)}>
+      </Button>
+      <Button
+        variant="contained"
+        className={classes.submit}
+        onClick={() => exportComponentAsPDF(componentRef)}
+      >
         Export As PDF
-      </button>
-      <button onClick={() => exportComponentAsPNG(componentRef)}>
+      </Button>
+      <Button
+        variant="contained"
+        className={classes.submit}
+        onClick={() => exportComponentAsPNG(componentRef)}
+      >
         Export As PNG
-      </button>
-    </React.Fragment>
+      </Button>
+    </div>
   );
 };
 

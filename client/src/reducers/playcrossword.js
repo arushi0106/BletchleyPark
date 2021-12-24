@@ -57,6 +57,9 @@ export default (
     case "FETCH_CROSSWORD":
       console.log(action.payload);
       return action.payload;
+    case "FETCH_CONTEST":
+      console.log(action.payload);
+      return action.payload;
     default:
       return crossword;
   }
