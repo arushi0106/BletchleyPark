@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Container } from "@material-ui/core";
+import { Button, Box } from "@material-ui/core";
 import Alert from "@mui/material/Alert";
 import CrosswordRow from "./CrosswordRow";
 import useStyles from "./styles";
@@ -11,7 +11,7 @@ import { Navigate } from "react-router-dom";
 const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("profile"));
   const crossword = useSelector((state) => state.crossword);
   let rows = [];
@@ -33,7 +33,9 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       );
     }
   }
-  const submitHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(e);
     for (var i = 0; i < crossword.table.length; i++) {
       for (var j = 0; j < crossword.table[i].length; j++) {
         if (table[i][j] !== crossword.table[i][j]) {
@@ -51,10 +53,14 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
     dispatch(submitCrossword(data));
     setStatus(1);
     Navigate("/leaderboard");
-    
   };
   return (
-    <Container elevation={3} className={classes.paper}>
+    <Box
+      component="form"
+      autoComplete="off"
+      elevation={3}
+      className={classes.paper}
+    >
       {rows}
       <Button onClick={submitHandler}>Check</Button>
       {status === 1 ? (
@@ -82,7 +88,7 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       ) : (
         ``
       )}
-    </Container>
+    </Box>
   );
 };
 
