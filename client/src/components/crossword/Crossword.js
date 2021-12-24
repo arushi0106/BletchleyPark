@@ -14,8 +14,8 @@ const Crossword = () => {
   // let start = 5;
   let startTime;
   const [time, setTime] = React.useState(0);
- 
-
+  const [table, setTable] = React.useState([]);
+  const [position, setPosition] = React.useState(crossword.positon);
   const [timerOn, setTimeOn] = React.useState(true);
   React.useEffect(() => {
     if (crossword.date == null) {
@@ -30,27 +30,21 @@ const Crossword = () => {
       // console.log(startDate.getTime());
       startTime = presentDate.getTime() - currdate.getTime(); //(Time we received)
       console.log(startTime);
-  
+
       console.log(crossword);
     }
     setTime(startTime);
-  }, [startTime,crossword.date]);
-  while (!crossword.table) {}
+    let l = crossword.table.length;
+    let w = crossword.table[0].length;
+    setTable(
+      Array(l)
+        .fill("-")
+        .map(() => new Array(w).fill("-"))
+    );
+    setPosition(crossword.position);
+    console.log(position);
+  }, [crossword]);
 
-  let l = crossword.table.length;
-  let w = crossword.table[0].length;
-  const [table, setTable] = useState(
-    Array(l)
-      .fill("-")
-      .map(() => new Array(w).fill("-"))
-  );
-
-  let position = Array(l)
-    .fill("")
-    .map(() => new Array(w).fill(""));
-  crossword.result.map((res) => {
-    position[res.startx - 1][res.starty - 1] = res.position;
-  });
   if (user?.result?.email == undefined) {
     return (
       <div className={classes.container}>

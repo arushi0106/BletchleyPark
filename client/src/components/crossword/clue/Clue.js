@@ -17,13 +17,13 @@ const Clue = () => {
       if (clues[i].orientation === "down") {
         down.push(
           <p>
-            {i + 1}. {clues[i].clue}
+            {clues[i].position}. {clues[i].clue}
           </p>
         );
       } else {
         across.push(
           <p>
-            {i + 1}. {clues[i].clue}
+            {clues[i].position}. {clues[i].clue}
           </p>
         );
       }
