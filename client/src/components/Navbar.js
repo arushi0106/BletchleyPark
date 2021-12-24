@@ -99,14 +99,22 @@ const Navbar = () => {
               </Avatar>
             </div>
           ) : (
-            <Button
-              component={Link}
-              to="/auth"
-              variant="contained"
-              sx={{ mr: 2 }}
-            >
-              Sign In
-            </Button>
+            <div className={classes.profile}>
+              <Button
+                color="inherit"
+                onClick={() => navigate("/newsfeed")}
+                className={classes.button}
+              >
+                Practice
+              </Button>
+              <Button
+                color="inherit"
+                onClick={() => navigate("/auth")}
+                className={classes.button}
+              >
+                Sign Up
+              </Button>
+            </div>
           )}
         </Toolbar>
       </AppBar>

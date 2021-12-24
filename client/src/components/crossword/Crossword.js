@@ -6,91 +6,88 @@ import { useSelector } from "react-redux";
 import Clue from "./clue/Clue";
 import useStyles from "./styles.js";
 
-  const Crossword = () => {
-    const classes = useStyles();
-    const user = JSON.parse(localStorage.getItem("profile"));
-    const crossword = useSelector((state) => state.crossword);
-    //Fetch this from backend: 
-    // let start = 5;
-    let startTime;
-    const [time, setTime] = React.useState(0);
-    if (crossword.date == null) {
-      startTime = 0;
-    } else {
-      let presentDate = new Date();
-      console.log(presentDate);
-      let startDate = crossword.date //fetched date
-      let currdate = new Date(crossword.date);
-      console.log(currdate);
-      console.log(presentDate.getTime());
-      // console.log(startDate.getTime());
-      startTime = presentDate.getTime() - currdate.getTime() //(Time we received)
-      console.log(startTime);
+const Crossword = () => {
+  const classes = useStyles();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const crossword = useSelector((state) => state.crossword);
+  //Fetch this from backend:
+  // let start = 5;
+  let startTime;
+  const [time, setTime] = React.useState(0);
+  if (crossword.date == null) {
+    startTime = 0;
+  } else {
+    let presentDate = new Date();
+    console.log(presentDate);
+    let startDate = crossword.date; //fetched date
+    let currdate = new Date(crossword.date);
+    console.log(currdate);
+    console.log(presentDate.getTime());
+    // console.log(startDate.getTime());
+    startTime = presentDate.getTime() - currdate.getTime(); //(Time we received)
+    console.log(startTime);
 
-      
-      console.log(crossword);
-    }
-    
-    const [timerOn, setTimeOn] = React.useState(true);
-    React.useEffect(() => {
-      setTime(startTime);
-    },[startTime])
-    while (!crossword.table) {
-     ; 
-    }
-  
-    let l = crossword.table.length;
-    let w = crossword.table[0].length;
-    const [table, setTable] = useState(
-      Array(l)
-        .fill("-")
-        .map(() => new Array(w).fill("-"))
-    );
-  
-    let position = Array(l)
-      .fill("")
-      .map(() => new Array(w).fill(""));
-    crossword.result.map((res) => {
-      position[res.startx - 1][res.starty - 1] = res.position;
-    });
-    if (user?.result?.email==undefined) {
-      return (
-        <div className={classes.container}>
-          <Typography variant="h6" align="center">
-            Please Sign In to create your own Crossword.
-          </Typography>
-        </div>
-      );
-    }
-  
+    console.log(crossword);
+  }
+
+  const [timerOn, setTimeOn] = React.useState(true);
+  React.useEffect(() => {
+    setTime(startTime);
+  }, [startTime]);
+  while (!crossword.table) {}
+
+  let l = crossword.table.length;
+  let w = crossword.table[0].length;
+  const [table, setTable] = useState(
+    Array(l)
+      .fill("-")
+      .map(() => new Array(w).fill("-"))
+  );
+
+  let position = Array(l)
+    .fill("")
+    .map(() => new Array(w).fill(""));
+  crossword.result.map((res) => {
+    position[res.startx - 1][res.starty - 1] = res.position;
+  });
+  if (user?.result?.email == undefined) {
     return (
-      <div>
-        <Container className={classes.container}>
-          <Timer
-            time={time}
-            setTime={setTime}
-            timerOn={timerOn}
-            setTimeOn={setTimeOn}
-          />
-          <Grid container alignItems="stretch" spacing={3}>
-            <Grid item xs={2}></Grid>
-            <Grid item xs={12} md={4}>
-              <CrosswordGrid
-                table={table}
-                setTable={setTable}
-                position={position}
-                setTimeOn={setTimeOn}
-                time={time}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Clue />
-            </Grid>
-            <Grid item xs={2}></Grid>
-          </Grid>
-        </Container>
+      <div className={classes.container}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own Crossword.
+        </Typography>
       </div>
     );
-  };
-  
-  export default Crossword;
+  }
+
+  return (
+    <div>
+      <Container className={classes.container}>
+        <Timer
+          time={time}
+          setTime={setTime}
+          timerOn={timerOn}
+          setTimeOn={setTimeOn}
+        />
+        <Grid container alignItems="stretch" spacing={3}>
+          <Grid item xs={2}></Grid>
+          <Grid item xs={12} md={4}>
+            <CrosswordGrid
+              table={table}
+              setTable={setTable}
+              position={position}
+              setTimeOn={setTimeOn}
+              time={time}
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Clue />
+          </Grid>
+          <Grid item xs={2}></Grid>
+        </Grid>
+      </Container>
+    </div>
+  );
+};
+
+export default Crossword;

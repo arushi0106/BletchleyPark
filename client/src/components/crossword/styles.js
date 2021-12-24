@@ -15,7 +15,6 @@ export default makeStyles(() => ({
     height: "2rem",
     textAlign: "center",
     textTransform: "uppercase",
-    backgroundColor: "#bdc3c7",
     borderColor: "white",
     borderWidth: "1px",
   },
