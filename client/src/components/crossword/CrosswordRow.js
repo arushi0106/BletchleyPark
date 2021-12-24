@@ -15,7 +15,7 @@ const CrosswordRow = (props) => {
       rows.push(
         <input
           size="small"
-          id="margin-none"
+          id={`${props.start} ${j}`}
           className={classes.input}
           label={y}
           type="text"
@@ -33,10 +33,8 @@ const CrosswordRow = (props) => {
         <input
           size="small"
           id="margin-none"
-          readOnly
-          // variant="outlined"
+          disabled
           label=" "
-          // defaultValue={" "}
           className={classes.inputBlock}
           type="text"
           maxLength="1"
