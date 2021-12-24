@@ -26,6 +26,7 @@ export const playCrossword = async (req, res) => {
 
   let userid = req.body.Userid;
   let crossid = req.body.id;
+  let Username=req.body.Username;
   let words = req.body.words.map((w) => {
     return {
       answer: w.answer,
@@ -46,6 +47,7 @@ export const playCrossword = async (req, res) => {
         totaltime: "0",
         userid: userid,
         crossid: crossid,
+        Username:Username,
       });
       mytime.save();
       console.log("elseif");
@@ -89,6 +91,10 @@ export const submitCrossword = async (req, res) => {
       res.send("reached");
     }
     else{
+    //  let t= timers.map((timer)=>{
+    //     return [...timer,{id:timer._id}]
+    //   })
+    //   console.log(t);
       res.send(timers);
     }
   })

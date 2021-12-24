@@ -34,15 +34,6 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
     }
   }
   const submitHandler = () => {
-    for (var i = 0; i < crossword.table.length; i++) {
-      for (var j = 0; j < crossword.table[i].length; j++) {
-        if (table[i][j] !== crossword.table[i][j]) {
-          setStatus(0);
-          return;
-        }
-      }
-    }
-    setTimeOn(false);
     let data = {
       time: time,
       userId: user.result._id,
@@ -51,6 +42,23 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
     dispatch(submitCrossword(data));
     setStatus(1);
     Navigate("/leaderboard");
+    for (var i = 0; i < crossword.table.length; i++) {
+      for (var j = 0; j < crossword.table[i].length; j++) {
+        if (table[i][j] !== crossword.table[i][j]) {
+          setStatus(0);
+          return;
+        }
+      }
+    }
+    // setTimeOn(false);
+    // let data = {
+    //   time: time,
+    //   userId: user.result._id,
+    //   crosswordId: crossword._id,
+    // };
+    // dispatch(submitCrossword(data));
+    // setStatus(1);
+    // Navigate("/leaderboard");
     
   };
   return (

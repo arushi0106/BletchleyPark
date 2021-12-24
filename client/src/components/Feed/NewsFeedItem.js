@@ -19,6 +19,7 @@ const NewsFeedItem = ({title, words, id}) => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
   let Userid=user.result._id;
+  let Username=user.result.name;
   // console.log(user);
   const handleClick = () => {
     setOpen(!open);
@@ -26,7 +27,7 @@ const NewsFeedItem = ({title, words, id}) => {
 
   const Playcross = () => {
 
-    dispatch(playCrossword({title,words,id,Userid}));
+    dispatch(playCrossword({title,words,id,Userid,Username}));
     navigate("/crossword")
   }
   return (
