@@ -28,10 +28,18 @@ const Words = ({
 
   const [error, setError] = useState(-1);
   const SubmitForm = () => {
-    setWords([...words, word]);
+    // setWords([...words, word]);
     setEntered(0);
     setCount(count + 1);
     submitHandler();
+  };
+  const handleChange = (e) => {
+    console.log(e);
+    if (e.target.name === "answer") {
+      setWord({ ...word, answer: e.target.value });
+    } else {
+      setWord({ ...word, clue: e.target.value });
+    }
   };
   return (
     <React.Fragment>
@@ -47,18 +55,16 @@ const Words = ({
         <TextField
           id="standard-full-width"
           fullWidth
+          name="answer"
           variant="outlined"
           label={`${answerLabel}`}
           placeholder="Apple"
           helperText={`Type a word (only letters allowed) and ${helperText}`}
           margin="normal"
+          onChange={handleChange}
           onKeyDown={(e) => {
             if (e.keyCode == 13) {
               if (/^[a-zA-Z]+$/.test(e.target.value)) {
-                console.log(e.target.value);
-                setWord({
-                  answer: e.target.value.toLowerCase(),
-                });
                 setEntered(entered + 1);
                 setError(-1);
               } else {
@@ -74,17 +80,17 @@ const Words = ({
         <TextField
           id="standard-full-width"
           fullWidth
+          name="clue"
           variant="outlined"
           label={`${clueLabel}`}
           placeholder="Red Fruit"
           margin="normal"
           helperText={`Give a clue for Word ${count} and ${helperText}`}
+          onChange={handleChange}
           onKeyDown={(e) => {
             if (e.keyCode === 13) {
-              setWord({
-                ...word,
-                clue: e.target.value,
-              });
+              setWords([...words, word]);
+              setWord([{}]);
               setEntered(2);
             }
           }}
@@ -99,7 +105,7 @@ const Words = ({
             size="large"
             onClick={() => {
               console.log(word);
-              setWords([...words, word]);
+              // setWords([...words, word]);
               setEntered(0);
               console.log(words);
               setCount(count + 1);
