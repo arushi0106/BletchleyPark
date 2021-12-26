@@ -1,10 +1,14 @@
 import cron from "node-cron";
 import fetch from "node-fetch";
 import clg from "crossword-layout-generator";
-
+import nodemailer from "nodemailer";
 let url =
   "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/1976/01/01.json";
+let year = 1976,
+  month = "01",
+  day = "01";
 cron.schedule("0 0 * * 0", function () {
+  year++;
   url =
     "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/" +
     year +
@@ -13,6 +17,27 @@ cron.schedule("0 0 * * 0", function () {
     "/" +
     day +
     ".json";
+  // let mailTransporter = nodemailer.createTransport({
+  //   host: "smtp.gmail.com",
+  //   port: 465,
+  //   secure: true, // use TLS
+  //   auth: {
+  //     user: "bletchleypark@gmail.com",
+  //     pass: process.env.PASSWORD,
+  //   },
+  // });
+
+  // let mailDetails = {
+  //   to: to.email,
+  //   subject: "Bletchley Park | Weekly Contest",
+  //   html: "We invite you to participate in our weekly contest. Go to http://localhost:3000 to compete now.",
+  // };
+
+  // mailTransporter.sendMail(mailDetails, function (err, data) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  // });
 });
 
 export const getContest = async (req, res) => {

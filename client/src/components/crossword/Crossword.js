@@ -66,8 +66,8 @@ const Crossword = () => {
           setTimeOn={setTimeOn}
         />
         <Grid container alignItems="stretch" spacing={3}>
-          <Grid item xs={1}></Grid>
-          <Grid item xs={12} md={7}>
+          {/* <Grid item xs={1}></Grid> */}
+          <Grid item xs={12} md={9}>
             <CrosswordGrid
               table={table}
               setTable={setTable}
@@ -76,7 +76,7 @@ const Crossword = () => {
               time={time}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <Clue />
           </Grid>
           <Grid item xs={2}></Grid>
