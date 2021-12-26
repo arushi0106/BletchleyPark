@@ -91,36 +91,21 @@ const Words = ({
             if (e.keyCode === 13) {
               setWords([...words, word]);
               setWord([{}]);
-              setEntered(2);
+              setEntered(0);
             }
           }}
         />
       ) : (
         ``
       )}
-      {entered === 2 ? (
+      {entered === 0 && words.length > 1 ? (
         <div>
-          <Button
-            variant="contained"
-            size="large"
-            onClick={() => {
-              console.log(word);
-              // setWords([...words, word]);
-              setEntered(0);
-              console.log(words);
-              setCount(count + 1);
-              // const x = words;
-              // dispatch(createCrossword(x));
-            }}
-          >
-            Add More Words?
-          </Button>
-          &nbsp; OR &nbsp;
           <Button
             // className={classes.buttonSubmit}
             variant="contained"
             size="large"
             type="submit"
+            fullWidth
             onClick={SubmitForm}
           >
             Create Crossword
