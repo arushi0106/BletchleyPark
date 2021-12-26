@@ -20,7 +20,7 @@ const Crossword = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const crossword = useSelector((state) => state.crossword);
   let startTime;
-  
+
   const [time, setTime] = React.useState(0);
   const [table, setTable] = React.useState([]);
   const [position, setPosition] = React.useState(crossword.positon);
@@ -69,8 +69,6 @@ const Crossword = () => {
       </div>
     );
   }
- 
-  
 
   return (
     <div>

@@ -4,11 +4,14 @@ import mongoose from "mongoose";
 import clg from "crossword-layout-generator";
 import nodemailer from "nodemailer";
 import Crossword from "../models/crossword.js";
+
 let url =
   "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/1976/01/01.json";
 let year = 1976,
   month = "01",
   day = "01";
+
+// Scheduler to automatically create new contests as a week ends
 cron.schedule("0 0 * * 0", async function () {
   year++;
   url =
@@ -56,20 +59,18 @@ cron.schedule("0 0 * * 0", async function () {
 export const getAllContest = (req, res) => {
   let cross;
   Crossword.find({ isContest: true }, function (err, Crosswords) {
-    // console.log(Crosswords);
     if (err) {
       cross = "error";
     } else {
       cross = Crosswords;
-      console.log(cross);
       res.send(cross);
     }
   });
 };
+
 export const getContest = async (req, res) => {
   const response = await fetch(url);
   var data = await response.json();
-  console.log(data);
   const l = data.size.cols;
   const w = data.size.rows;
   let layout = {};
@@ -113,7 +114,5 @@ export const getContest = async (req, res) => {
   layout.cols = l;
   layout.position = position;
   layout.result = result;
-  console.log(table);
-  console.log(result);
   res.send(layout);
 };
