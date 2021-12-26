@@ -49,11 +49,10 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       time: time,
       userId: user.result._id,
       crosswordId: crossword._id,
-      isContest:crossword.isContest,
+      isContest: crossword.isContest,
     };
     dispatch(submitCrossword(data));
     setStatus(1);
-    navigate("/leaderboard");
   };
   return (
     <Box

@@ -1,4 +1,11 @@
-import { Container, Grid, Paper, Typography } from "@material-ui/core";
+import {
+  Container,
+  createTheme,
+  Grid,
+  Paper,
+  ThemeProvider,
+  Typography,
+} from "@material-ui/core";
 import React, { useState } from "react";
 import CrosswordGrid from "./CrosswordGrid";
 import Timer from "./timer.js";
@@ -11,13 +18,18 @@ const Crossword = () => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
   const crossword = useSelector((state) => state.crossword);
-  //Fetch this from backend:
-  // let start = 5;
   let startTime;
   const [time, setTime] = React.useState(0);
   const [table, setTable] = React.useState([]);
   const [position, setPosition] = React.useState(crossword.positon);
   const [timerOn, setTimeOn] = React.useState(true);
+
+  const z = createTheme({
+    typography: {
+      fontFamily: ["Syncopate", "cursive"].join(","),
+    },
+  });
+
   React.useEffect(() => {
     if (crossword.date == null) {
       startTime = 0;
@@ -59,12 +71,15 @@ const Crossword = () => {
   return (
     <div>
       <Container className={classes.container}>
-        <Timer
-          time={time}
-          setTime={setTime}
-          timerOn={timerOn}
-          setTimeOn={setTimeOn}
-        />
+        <ThemeProvider theme={z}>
+          <Timer
+            time={time}
+            setTime={setTime}
+            timerOn={timerOn}
+            setTimeOn={setTimeOn}
+          />
+        </ThemeProvider>
+
         <Grid container alignItems="stretch" spacing={3}>
           {/* <Grid item xs={1}></Grid> */}
           <Grid item xs={12} md={9}>

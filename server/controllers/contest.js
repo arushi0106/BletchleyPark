@@ -3,12 +3,13 @@ import fetch from "node-fetch";
 import mongoose from "mongoose";
 import clg from "crossword-layout-generator";
 import nodemailer from "nodemailer";
+import Crossword from "../models/crossword.js";
 let url =
   "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/1976/01/01.json";
 let year = 1976,
   month = "01",
   day = "01";
-cron.schedule("0 0 * * 0", function () {
+cron.schedule("0 0 * * 0", async function () {
   year++;
   url =
     "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/" +
@@ -18,6 +19,17 @@ cron.schedule("0 0 * * 0", function () {
     "/" +
     day +
     ".json";
+  const mycrossword = new Crossword({
+    title: url,
+    privacy: "0",
+    words: [],
+    userid: "admin",
+    username: "admin",
+    isContest: true,
+  });
+
+  await mycrossword.save();
+
   // let mailTransporter = nodemailer.createTransport({
   //   host: "smtp.gmail.com",
   //   port: 465,

@@ -20,7 +20,7 @@ const Clue = () => {
             {clues[i].position}. {clues[i].clue}
           </p>
         );
-      } else {
+      } else if (clues[i].orientation === "across") {
         across.push(
           <p>
             {clues[i].position}. {clues[i].clue}

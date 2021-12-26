@@ -23,7 +23,7 @@ export default makeStyles((theme) => ({
     paddingTop: "10rem",
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: "2px",
     backgroundColor: "#00b894",
     color: "white",
     "&:hover": {
