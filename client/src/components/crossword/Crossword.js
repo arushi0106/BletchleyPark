@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Clue from "./clue/Clue";
 import useStyles from "./styles.js";
 import { getContest } from "../../actions/contest.js";
+
 const Crossword = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Crossword = () => {
   //Fetch this from backend:
   // let start = 5;
   let startTime;
+  
   const [time, setTime] = React.useState(0);
   const [table, setTable] = React.useState([]);
   const [position, setPosition] = React.useState(crossword.positon);
@@ -55,6 +57,8 @@ const Crossword = () => {
       </div>
     );
   }
+ 
+  
 
   return (
     <div>
