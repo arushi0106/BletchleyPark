@@ -6,7 +6,7 @@ const CrosswordRow = (props) => {
   const classes = useStyles();
   const numrows = props.data.length;
   const crossword = useSelector((state) => state.crossword);
-  console.log(crossword.position);
+  // console.log(crossword.position);
   let rows = [];
   for (var j = 0; j < numrows; j++) {
     if (props.data[j] !== "-" && props.data[j] != ".") {

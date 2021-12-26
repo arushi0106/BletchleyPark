@@ -1,5 +1,10 @@
+import ListSubheader from "@mui/material/ListSubheader";
+import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 import { Divider, Typography, ListItem, Avatar } from "@mui/material";
 import React, { useState } from "react";
 import useStyles from "./styles";
@@ -23,18 +28,30 @@ const NewsFeedItem = () => {
       fontFamily: ["Moo Lah Lah", "cursive"].join(","),
     },
   });
-
+  const whiteTheme = createTheme({
+    palette: {
+      primary: {
+        main: teal[50],
+      },
+    },
+  });
   return (
     <div className={classes.special}>
       <ListItemButton onClick={handleClick}>
-        <ListItemText>
+        <ListItemText
+          secondary="
+                  Time Left:
+                  &nbsp; 1 day, 2hrs left
+              "
+          color="white"
+        >
           <ThemeProvider theme={emphasis}>
             <Typography
               sx={{ display: "inline" }}
               component="span"
               variant="h3"
             >
-              Weekly Challenge
+              Weekly Contest
             </Typography>
           </ThemeProvider>
         </ListItemText>

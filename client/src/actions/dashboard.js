@@ -9,3 +9,14 @@ export const getdashboard = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const getleaderboard = (id) => async (dispatch) => {
+  try {
+    console.log(id);
+    const { data } = await api.getleaderboard(id);
+    console.log(data);
+    dispatch({ type: "FETCH_DASH_LEADERBOARD", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

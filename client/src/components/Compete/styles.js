@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
   container: {
@@ -9,13 +9,5 @@ export default makeStyles(() => ({
     color: "white",
     borderRadius: "10px",
     marginBottom: "10px",
-  },
-  submit: {
-    margin: "10px",
-    backgroundColor: "#00b894",
-    color: "white",
-    "&:hover": {
-      backgroundColor: "#004d40",
-    },
   },
 }));

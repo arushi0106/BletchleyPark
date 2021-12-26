@@ -1,10 +1,16 @@
 import cron from "node-cron";
 import fetch from "node-fetch";
+import mongoose from "mongoose";
 import clg from "crossword-layout-generator";
-
+import nodemailer from "nodemailer";
+import Crossword from "../models/crossword.js";
 let url =
   "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/1976/01/01.json";
-cron.schedule("0 0 * * 0", function () {
+let year = 1976,
+  month = "01",
+  day = "01";
+cron.schedule("0 0 * * 0", async function () {
+  year++;
   url =
     "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/" +
     year +
@@ -13,8 +19,53 @@ cron.schedule("0 0 * * 0", function () {
     "/" +
     day +
     ".json";
+  const mycrossword = new Crossword({
+    title: url,
+    privacy: "0",
+    words: [],
+    userid: "admin",
+    username: "admin",
+    isContest: true,
+  });
+
+  await mycrossword.save();
+
+  // let mailTransporter = nodemailer.createTransport({
+  //   host: "smtp.gmail.com",
+  //   port: 465,
+  //   secure: true, // use TLS
+  //   auth: {
+  //     user: "bletchleypark@gmail.com",
+  //     pass: process.env.PASSWORD,
+  //   },
+  // });
+
+  // let mailDetails = {
+  //   to: to.email,
+  //   subject: "Bletchley Park | Weekly Contest",
+  //   html: "We invite you to participate in our weekly contest. Go to http://localhost:3000 to compete now.",
+  // };
+
+  // mailTransporter.sendMail(mailDetails, function (err, data) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  // });
 });
 
+export const getAllContest = (req, res) => {
+  let cross;
+  Crossword.find({ isContest: true }, function (err, Crosswords) {
+    // console.log(Crosswords);
+    if (err) {
+      cross = "error";
+    } else {
+      cross = Crosswords;
+      console.log(cross);
+      res.send(cross);
+    }
+  });
+};
 export const getContest = async (req, res) => {
   const response = await fetch(url);
   var data = await response.json();

@@ -1,8 +1,9 @@
 import express from "express";
-import { getContest } from "../controllers/contest.js";
+import { getContest, getAllContest } from "../controllers/contest.js";
 
 const router = express.Router();
 
+router.get("/all",getAllContest);
 router.get("/", getContest);
 
 export default router;

@@ -8,39 +8,34 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { Divider, Typography, ListItem, Avatar } from "@mui/material";
 import React, { useState } from "react";
-import { Button, ThemeProvider, createTheme } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import useStyles from "./styles";
-import { playCrossword } from "../../actions/playcrossword.js";
+import { useSelector } from "react-redux";
+import {playCrossword} from "../../actions/playcrossword.js"
 import { getleaderboard } from "../../actions/dashboard.js";
 import { useNavigate } from "react-router-dom";
-const NewsFeedItem = ({ title, words, id, createuser, solved }) => {
-  const classes = useStyles();
+const CompeteItem = ({title, words, id, createuser}) => {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
+  const navigate= useNavigate();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
-  let Userid = user.result._id;
-  let Username = user.result.name;
-  const z = createTheme({
-    typography: {
-      fontFamily: ["Syncopate", "cursive"].join(","),
-    },
-  });
+  let Userid=user.result._id;
+  let Username=user.result.name;
   // console.log(user);
   const handleClick = () => {
     setOpen(!open);
   };
 
   const Playcross = () => {
-    dispatch(playCrossword({ title, words, id, Userid, Username, solved }));
-    navigate("/crossword");
-  };
+
+    dispatch(playCrossword({title,words,id,Userid,Username}));
+    navigate("/crossword")
+  }
 
   const ShowLeaderboard = () => {
     dispatch(getleaderboard(id));
     navigate("/leaderboard");
-  };
+  }
   return (
     <div>
       <ListItemButton onClick={handleClick}>
@@ -49,7 +44,7 @@ const NewsFeedItem = ({ title, words, id, createuser, solved }) => {
           // src={user?.result.imageUrl}
           sx={{ mr: 2 }}
         >
-          {createuser ? createuser.charAt(0) : "-"}
+         a
         </Avatar>
         <ListItemText primary={title} />
         {open ? <ExpandLess /> : <ExpandMore />}
@@ -94,29 +89,24 @@ const NewsFeedItem = ({ title, words, id, createuser, solved }) => {
             <ListItemText
               primary={
                 <React.Fragment>
-                  Attempted By:
+                  Solved By:
                   <Typography
                     sx={{ display: "inline" }}
                     component="span"
                     variant="body2"
                     color="text.primary"
                   >
-                    &nbsp; {solved}
+                    &nbsp; 256
                   </Typography>
                 </React.Fragment>
               }
             />
           </ListItem>
           <ListItem>
-            <ThemeProvider theme={z}>
-              <Button onClick={Playcross} className={classes.submit}>
-                play
-              </Button>
-
-              <Button onClick={ShowLeaderboard} className={classes.submit}>
-                Leaderboard
-              </Button>
-            </ThemeProvider>
+           <Button onClick={Playcross}>play</Button>
+          </ListItem>
+          <ListItem>
+           <Button onClick={ShowLeaderboard}>Leaderboard</Button>
           </ListItem>
         </List>
       </Collapse>
@@ -125,4 +115,4 @@ const NewsFeedItem = ({ title, words, id, createuser, solved }) => {
   );
 };
 
-export default NewsFeedItem;
+export default CompeteItem;
