@@ -42,7 +42,7 @@ const columns = [
 export default function DataTable() {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
-  const leaderboard = useSelector((state) => state.leaderboard);
+  const leaderboard = useSelector((state) => state.dashleaderboard);
   console.log(leaderboard);
   const rows = leaderboard;
   console.log(leaderboard);

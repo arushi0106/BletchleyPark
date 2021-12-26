@@ -7,6 +7,7 @@ const timerSchema = mongoose.Schema({
     userid:String,
     crossid:String,
     Username:String,
+    complete:{type:Boolean,default:false}
   });
 
   const timer = mongoose.model("timer", timerSchema);

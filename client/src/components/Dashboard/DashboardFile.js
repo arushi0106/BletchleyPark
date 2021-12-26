@@ -3,11 +3,22 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
+import { useDispatch } from "react-redux";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { Divider, Typography, ListItem } from "@mui/material";
+import {playCrossword} from "../../actions/playcrossword.js"
+import { getleaderboard } from "../../actions/dashboard.js";
+import { useNavigate } from "react-router-dom";
+
+import { Divider, Typography, ListItem, Button } from "@mui/material";
 import React, { useState } from "react";
-const DashboardFile = ({ title }) => {
+const DashboardFile = ({ title ,words ,crossid }) => {
   const [open, setOpen] = useState(false);
+  const navigate= useNavigate();
+  const dispatch = useDispatch();
+  let id=crossid;
+  const user = JSON.parse(localStorage.getItem("profile"));
+  let Userid=user.result._id;
+  let Username=user.result.name;
   const data = [
     {
       name: "Sreemoyee",
@@ -26,6 +37,17 @@ const DashboardFile = ({ title }) => {
     setOpen(!open);
   };
 
+  const ShowCrossword=()=>{
+    dispatch(playCrossword({title,words,id,Userid,Username}));
+    navigate("/crossword")
+  }
+
+  const ShowLeaderboard=()=>{
+    console.log(id);
+    dispatch(getleaderboard(id));
+    navigate("/leaderboard");
+  }
+
   return (
     <div>
       <ListItemButton onClick={handleClick}>
@@ -43,6 +65,8 @@ const DashboardFile = ({ title }) => {
           })}
 
           <Divider variant="inset" component="li" />
+          <Button onClick={ShowCrossword}>show</Button>
+          <Button onClick={ShowLeaderboard}>Leaderboard</Button>
         </List>
       </Collapse>
     </div>

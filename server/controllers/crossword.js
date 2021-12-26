@@ -5,18 +5,17 @@ import User from "../models/user.js";
 import clg from "crossword-layout-generator";
 
 export const createCrossword = async (req, res) => {
-  // console.log(req.body.user);
-  // const layout = await clg.generateLayout(req.body.words);
+  
   const mycrossword = new Crossword({
     title: req.body.title,
     privacy: "0",
     words: req.body.words,
     userid: req.body.user.result._id,
+    username:req.body.user.result.name,
   });
-  // console.log(req.body.user.result);
-  // mycrossword.user.push(req.body.user.result._id);
+  
   await mycrossword.save();
-  // res.send(layout);
+  
 };
 
 export const playCrossword = async (req, res) => {
@@ -80,7 +79,7 @@ export const submitCrossword = async (req, res) => {
   let time = req.body.time;
   timer.findOneAndUpdate(
     { userid: userid, crossid: crosswordid },
-    { $set: { totaltime: time } },
+    { $set: { totaltime: time, complete: true } },
     { new: true },
     (err, doc) => {
       if (err) {
@@ -90,6 +89,7 @@ export const submitCrossword = async (req, res) => {
       console.log(doc);
     }
   );
+ 
   timer.find({ crossid: crosswordid }, function (err, timers) {
     if (err) {
       console.log("error");

@@ -12,8 +12,9 @@ import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {playCrossword} from "../../actions/playcrossword.js"
+import { getleaderboard } from "../../actions/dashboard.js";
 import { useNavigate } from "react-router-dom";
-const NewsFeedItem = ({title, words, id}) => {
+const NewsFeedItem = ({title, words, id, createuser}) => {
   const [open, setOpen] = useState(false);
   const navigate= useNavigate();
   const dispatch = useDispatch();
@@ -29,6 +30,11 @@ const NewsFeedItem = ({title, words, id}) => {
 
     dispatch(playCrossword({title,words,id,Userid,Username}));
     navigate("/crossword")
+  }
+
+  const ShowLeaderboard = () => {
+    dispatch(getleaderboard(id));
+    navigate("/leaderboard");
   }
   return (
     <div>
@@ -56,7 +62,7 @@ const NewsFeedItem = ({title, words, id}) => {
                     variant="body2"
                     color="text.primary"
                   >
-                    &nbsp; Arushi Agarwal, 5 minutes ago
+                    &nbsp; {createuser}
                   </Typography>
                 </React.Fragment>
               }
@@ -98,6 +104,9 @@ const NewsFeedItem = ({title, words, id}) => {
           </ListItem>
           <ListItem>
            <Button onClick={Playcross}>play</Button>
+          </ListItem>
+          <ListItem>
+           <Button onClick={ShowLeaderboard}>Leaderboard</Button>
           </ListItem>
         </List>
       </Collapse>

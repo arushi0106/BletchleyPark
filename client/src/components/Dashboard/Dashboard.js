@@ -53,7 +53,7 @@ export default function NestedList() {
           Create New Crossword
         </Button>
         {dashboard.map((data) => {
-          return <DashboardFile title={data.title} />;
+          return <DashboardFile title={data.title} words={data.words} crossid={data._id} />;
         })}
       </List>
     </div>
