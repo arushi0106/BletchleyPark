@@ -1,5 +1,6 @@
 import cron from "node-cron";
 import fetch from "node-fetch";
+import mongoose from "mongoose";
 import clg from "crossword-layout-generator";
 import nodemailer from "nodemailer";
 let url =
@@ -40,6 +41,19 @@ cron.schedule("0 0 * * 0", function () {
   // });
 });
 
+export const getAllContest = (req, res) => {
+  let cross;
+  Crossword.find({ isContest: true }, function (err, Crosswords) {
+    // console.log(Crosswords);
+    if (err) {
+      cross = "error";
+    } else {
+      cross = Crosswords;
+      console.log(cross);
+      res.send(cross);
+    }
+  });
+};
 export const getContest = async (req, res) => {
   const response = await fetch(url);
   var data = await response.json();

@@ -43,7 +43,7 @@ const NewsFeed = () => {
         <NewsFeedSpecialItem />
         {newsfeed.map((data) => {
           return (
-            <NewsFeedItem title={data.title} words={data.words} id={data._id} />
+            <NewsFeedItem title={data.title} words={data.words} id={data._id} createuser={data.username} solved={data.solved} />
           );
         })}
         <Pagination count={10} />

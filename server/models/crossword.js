@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import User from "./user.js";
+
 
 const Schema = mongoose.connection;
 const crosswordSchema = mongoose.Schema({
@@ -10,6 +10,16 @@ const crosswordSchema = mongoose.Schema({
     clue: String,
   }],
   userid: String,
+  username:String,
+  isContest:{
+    type:Boolean,
+    default:false,
+  },
+  solved:{
+    type:Number,
+    default:0,
+  },
+  
 });
 
 const Crossword = mongoose.model("Crossword", crosswordSchema);

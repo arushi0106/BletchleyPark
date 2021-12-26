@@ -5,6 +5,7 @@ import newsfeed from "./newsfeed";
 import dashboard from "./dashboard";
 import crossword from "./playcrossword";
 import leaderboard from "./leaderboard";
+import dashleaderboard from "./dleaderboard"
 
 export default combineReducers({
   crossword,
@@ -12,4 +13,5 @@ export default combineReducers({
   newsfeed,
   dashboard,
   leaderboard,
+  dashleaderboard,
 });
