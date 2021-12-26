@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { TextField, Alert, Button } from "@mui/material";
-
+import { TextField, Button } from "@material-ui/core";
+import { Alert } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { createCrossword } from "../../../actions/crossword";
-
+import useStyles from "../styles";
 const Words = ({
   title,
   count,
@@ -18,6 +18,7 @@ const Words = ({
   submitHandler,
 }) => {
   const dispatch = useDispatch();
+  const classes = useStyles();
   const clueLabel = `Clue ${count}`;
   const answerLabel = `Word ${count}`;
   const [entered, setEntered] = useState(0);
@@ -36,7 +37,7 @@ const Words = ({
   const handleChange = (e) => {
     console.log(e);
     if (e.target.name === "answer") {
-      setWord({ ...word, answer: e.target.value });
+      setWord({ ...word, answer: e.target.value.toLowerCase() });
     } else {
       setWord({ ...word, clue: e.target.value });
     }
@@ -101,7 +102,7 @@ const Words = ({
       {entered === 0 && words.length > 1 ? (
         <div>
           <Button
-            // className={classes.buttonSubmit}
+            className={classes.submit}
             variant="contained"
             size="large"
             type="submit"

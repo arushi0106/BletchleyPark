@@ -16,9 +16,6 @@ import {
   createTheme,
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
-// import { ThemeProvider, createTheme } from "@material-ui/core";
-// import Typography from "@mui/material/Typography";
-// import { Paper } from "@material-ui/core";
 
 export default function NestedList() {
   const classes = useStyles();

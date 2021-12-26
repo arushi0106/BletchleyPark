@@ -68,11 +68,9 @@ export const playCrossword = async (req, res) => {
           console.log(doc);
         }
       );
-      console.log("elseif");
       layout.date = null;
       res.send(layout);
     } else {
-      console.log("else");
       time = timers;
       console.log(time);
       layout.date = timers.startdate;

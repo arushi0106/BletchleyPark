@@ -19,5 +19,6 @@ export default makeStyles((theme) => ({
     textAlign: "center",
     fontSize: "3rem",
     paddingTop: "7rem",
+    color: "grey",
   },
 }));

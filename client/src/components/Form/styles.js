@@ -9,6 +9,9 @@ export default makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  text: {
+    textAlign: "center",
+  },
   paper: {
     paddingTop: "14rem",
     // padding: theme.spacing(2),
@@ -25,5 +28,13 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10,
+  },
+  submit: {
+    margin: "10px",
+    backgroundColor: "#00b894",
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#004d40",
+    },
   },
 }));
