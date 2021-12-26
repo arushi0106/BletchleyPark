@@ -16,7 +16,7 @@ import { hide } from "@popperjs/core";
 import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const user = JSON.parse(localStorage.getItem("profile"));
   const history = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const Form = () => {
   const submitHandler = () => {
     console.log(user);
     dispatch(createCrossword({ words, title, accessibiliy, user }));
-    history("/crossword");
+    history("/dashboard");
   };
   const submitTitle = (e) => {
     if (e.keyCode == 13) {
