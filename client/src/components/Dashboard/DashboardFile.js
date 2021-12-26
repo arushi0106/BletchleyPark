@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Divider, Typography, ListItem, Button } from "@mui/material";
 import React, { useState } from "react";
-const DashboardFile = ({ title ,words ,crossid }) => {
+const DashboardFile = ({ title ,words ,crossid, solved }) => {
   const [open, setOpen] = useState(false);
   const navigate= useNavigate();
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const DashboardFile = ({ title ,words ,crossid }) => {
   };
 
   const ShowCrossword=()=>{
-    dispatch(playCrossword({title,words,id,Userid,Username}));
+    dispatch(playCrossword({title,words,id,Userid,Username,solved}));
     navigate("/crossword")
   }
 

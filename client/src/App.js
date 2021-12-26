@@ -13,6 +13,7 @@ import Dashboard from "./components/Dashboard/Dashboard.js";
 import NewsFeed from "./components/Feed/NewsFeed.js";
 import Leaderboard from "./components/Leaderboard/Leaderboard.js";
 import HomePage from "./components/HomePage/HomePage.js";
+import Compete from "./components/Compete/Compete.js";
 const ref = React.createRef();
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/compete" element={<Compete />} />
           <Route path="/form" element={<Form />} />
           <Route path="/crossword" element={<MyCrossword />} />
           <Route path="/dashboard" element={<Dashboard />} />

@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import {playCrossword} from "../../actions/playcrossword.js"
 import { getleaderboard } from "../../actions/dashboard.js";
 import { useNavigate } from "react-router-dom";
-const NewsFeedItem = ({title, words, id, createuser, solved}) => {
+const CompeteItem = ({title, words, id, createuser}) => {
   const [open, setOpen] = useState(false);
   const navigate= useNavigate();
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const NewsFeedItem = ({title, words, id, createuser, solved}) => {
 
   const Playcross = () => {
 
-    dispatch(playCrossword({title,words,id,Userid,Username,solved}));
+    dispatch(playCrossword({title,words,id,Userid,Username}));
     navigate("/crossword")
   }
 
@@ -89,14 +89,14 @@ const NewsFeedItem = ({title, words, id, createuser, solved}) => {
             <ListItemText
               primary={
                 <React.Fragment>
-                  Attempted By:
+                  Solved By:
                   <Typography
                     sx={{ display: "inline" }}
                     component="span"
                     variant="body2"
                     color="text.primary"
                   >
-                  &nbsp; {solved}
+                    &nbsp; 256
                   </Typography>
                 </React.Fragment>
               }
@@ -115,4 +115,4 @@ const NewsFeedItem = ({title, words, id, createuser, solved}) => {
   );
 };
 
-export default NewsFeedItem;
+export default CompeteItem;

@@ -11,6 +11,14 @@ const crosswordSchema = mongoose.Schema({
   }],
   userid: String,
   username:String,
+  isContest:{
+    type:Boolean,
+    default:false,
+  },
+  solved:{
+    type:Number,
+    default:0,
+  },
   
 });
 
