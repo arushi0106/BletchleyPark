@@ -3,10 +3,13 @@ import fetch from "node-fetch";
 import mongoose from "mongoose";
 import clg from "crossword-layout-generator";
 import Crossword from "../models/crossword.js"
+import mydate from "../models/contest.js"
 import timer from "../models/timer.js";
 let url =
   "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/1976/01/01.json";
-cron.schedule("0 0 * * 0", async function () {
+  let Cdate=new Date('Sun Dec 26 2021 00:00:00 GMT+0530 (India Standard Time)');
+  cron.schedule("0 0 * * 0", async function () {
+    Cdate = new Date();
   url =
     "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/" +
     year +
@@ -45,9 +48,11 @@ export const getAllContest =  (req, res) => {
    })
   }
 export const getContest = async (req, res) => {
+  // const date = new Date();
   const response = await fetch(url);
   var data = await response.json();
   console.log(data);
+
   const l = data.size.cols;
   const w = data.size.rows;
   let layout = {};
@@ -93,5 +98,8 @@ export const getContest = async (req, res) => {
   layout.result = result;
   console.log(table);
   console.log(result);
+  layout.date=Cdate;
+  layout._id="contest";
+  layout.isContest=true;
   res.send(layout);
 };

@@ -22,6 +22,7 @@ export const playCrossword = async (req, res) => {
   let date = new Date();
 
   console.log(date);
+  console.log(req.body);
 
   let userid = req.body.Userid;
   let crossid = req.body.id;
@@ -84,6 +85,7 @@ export const playCrossword = async (req, res) => {
 export const submitCrossword = async (req, res) => {
   console.log(req.body);
   let userid = req.body.userId;
+  let username=req.body.userName;
   let crosswordid = req.body.crosswordId;
   let time = req.body.time;
   let isContest= req.body.isContest;
@@ -126,8 +128,9 @@ else
     starttime: "0",
     totaltime: time,
     userid: userid,
-    crossid: crossid,
-    Username:Username,
+    crossid: crosswordid,
+    Username:username,
+    complete:true,
   });
   mytime.save();
   res.send("submitted");

@@ -77,7 +77,14 @@ const Navbar = () => {
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={() => navigate("/leaderboard")}
+                  onClick={() => navigate("/compete")}
+                  className={classes.button}
+                >
+                  Compete
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => navigate("/contest")}
                   className={classes.button}
                 >
                   Compete
