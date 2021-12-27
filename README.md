@@ -5,8 +5,8 @@
 ## Introduction:
 Bletchley Park is a web development project that is designed and developed by Sreemoyee Basu, Arushi Agarwal and Srijan Saxena for Webster'21. It allows user to create crossword using the clues and words given by them. They can also practice crosswords created by others and compete in weekly challenges.
   
-## Demo Video Link:
-  https://youtu.be/hIe1NemHwUc
+<!-- ## Demo Video Link:
+  https://youtu.be/hIe1NemHwUc -->
   
 ## Table of Contents:
 * [ Features ](#features)
@@ -36,13 +36,15 @@ Bletchley Park is a web development project that is designed and developed by Sr
 
 
 ## <a name="images"></a>Images:
-![alt text](https://github.com/sreebasu05/engage-keep-in-touch/blob/master/static/images/image-1.png)<br><br>
-![alt text](https://github.com/sreebasu05/engage-keep-in-touch/blob/master/static/images/image-2.png)<br><br>
-![alt text](https://github.com/sreebasu05/engage-keep-in-touch/blob/master/static/images/image-3.png)<br><br>
-![alt text](https://github.com/sreebasu05/engage-keep-in-touch/blob/master/static/images/image-4.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img1.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img2.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img3.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img4.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img5.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img6.png)<br><br>
 
 ## <a name="credits"></a>Credits:
 * Developer - [Sreemoyee Basu](https://github.com/sreebasu05)
 * Developer - [Arushi Agarwal](https://github.com/arushi0106)
- * Developer - [Srijan Saxena](https://github.com/srijan-bytes)
+* Developer - [Srijan Saxena](https://github.com/srijan-bytes)
 
