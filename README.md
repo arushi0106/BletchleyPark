@@ -36,12 +36,12 @@ Bletchley Park is a web development project that is designed and developed by Sr
 
 
 ## <a name="images"></a>Images:
-![alt text](https://github.com/arushi0106/BletchleyPark/client/public/img1.png)<br><br>
-![alt text](https://github.com/arushi0106/BletchleyPark/client/public/img2.png)<br><br>
-![alt text](https://github.com/arushi0106/BletchleyPark/client/public/img3.png)<br><br>
-![alt text](https://github.com/arushi0106/BletchleyPark/client/public/img4.png)<br><br>
-![alt text](https://github.com/arushi0106/BletchleyPark/client/public/img5.png)<br><br>
-![alt text](https://github.com/arushi0106/BletchleyPark/client/public/img6.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img1.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img2.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img3.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img4.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img5.png)<br><br>
+![alt text](https://github.com/arushi0106/BletchleyPark/blob/main/client/public/img6.png)<br><br>
 
 ## <a name="credits"></a>Credits:
 * Developer - [Sreemoyee Basu](https://github.com/sreebasu05)
