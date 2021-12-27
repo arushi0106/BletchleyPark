@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Clue from "./clue/Clue";
 import useStyles from "./styles.js";
 import { getContest } from "../../actions/contest.js";
-
+import{useNavigate} from "react-router-dom"
 const Crossword = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const Crossword = () => {
   const [table, setTable] = React.useState([]);
   const [position, setPosition] = React.useState(crossword.positon);
   const [timerOn, setTimeOn] = React.useState(true);
-
+  const navigate=useNavigate();
   const z = createTheme({
     typography: {
       fontFamily: ["Syncopate", "cursive"].join(","),
@@ -61,6 +61,7 @@ const Crossword = () => {
   }, [crossword]);
 
   if (user?.result?.email == undefined) {
+    navigate("/auth");
     return (
       <div className={classes.container}>
         <Typography variant="h6" align="center">
