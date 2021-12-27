@@ -52,7 +52,8 @@ const Form = () => {
     setAccessibiliy(e.target.value);
     setCount(count + 1);
   };
-  if (!user?.result?.name) {
+  if (user?.result?.email==undefined) {
+    history("/auth");
     return (
       <Paper className={classes.paper}>
         <Typography variant="h6" align="center">

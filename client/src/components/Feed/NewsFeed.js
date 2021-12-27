@@ -20,6 +20,7 @@ const NewsFeed = () => {
     dispatch(getnewsfeed());
   }, [newsfeed]);
   if (user?.result?.email == undefined) {
+    history("/auth");
     return (
       <div className={classes.container}>
         <Typography variant="h6" align="center">
