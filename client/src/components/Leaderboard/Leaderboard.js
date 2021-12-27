@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { submitCrossword } from "../../actions/playcrossword.js";
+import { useNavigate } from "react-router-dom";
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", width: 1000 },
@@ -17,13 +18,16 @@ const columns = [
 ];
 
 export default function DataTable() {
+  
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
   const leaderboard = useSelector((state) => state.dashleaderboard);
   console.log(leaderboard);
   const rows = leaderboard;
   console.log(leaderboard);
+  const navigate=useNavigate();
   if (user?.result?.email == undefined) {
+    navigate("/auth");
     return (
       <div className={classes.container}>
         <Typography variant="h6" align="center">

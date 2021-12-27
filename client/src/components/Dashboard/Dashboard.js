@@ -36,6 +36,8 @@ export default function NestedList() {
 
   const dashboard = useSelector((state) => state.dashboard);
   if (user?.result?.email == undefined) {
+    
+    navigate("/auth");
     return (
       <div className={classes.container}>
         <ThemeProvider theme={z}>
