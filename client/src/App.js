@@ -23,7 +23,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Container maxWidth="lg">
-        {/* <Navbar /> */}
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<Dashboard />} />

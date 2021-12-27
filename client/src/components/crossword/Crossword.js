@@ -68,18 +68,23 @@ const Crossword = () => {
         </Typography>
       </div>
     );
+    
   }
-
+  
   return (
     <div>
       <Container className={classes.container}>
         <ThemeProvider theme={z}>
-          <Timer
+         {crossword.PreComplete?(<div className={classes.container}>
+       <Typography variant="h6" align="center">
+        You have already solved the Crossword
+       </Typography>
+     </div>):(< Timer
             time={time}
             setTime={setTime}
             timerOn={timerOn}
             setTimeOn={setTimeOn}
-          />
+          />)} 
         </ThemeProvider>
 
         <Grid container alignItems="stretch" spacing={3}>

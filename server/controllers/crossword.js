@@ -19,8 +19,8 @@ export const createCrossword = async (req, res) => {
 export const playCrossword = async (req, res) => {
   let date = new Date();
 
-  console.log(date);
-  console.log(req.body);
+  // console.log(date);
+  // console.log(req.body);
 
   let userid = req.body.Userid;
   let crossid = req.body.id;
@@ -43,6 +43,7 @@ export const playCrossword = async (req, res) => {
   });
   layout.position = position;
   let time;
+  let PreComplete=false;
   timer.findOne({ userid: userid, crossid: crossid }, function (err, timers) {
     if (err) {
       time = "error";
@@ -70,15 +71,19 @@ export const playCrossword = async (req, res) => {
         }
       );
       layout.date = null;
+      layout._id = req.body.id;
+      layout.PreComplete=PreComplete;
       res.send(layout);
     } else {
       time = timers;
       console.log(time);
+      if(time.complete==true)
+      PreComplete=true;
       layout.date = timers.startdate;
       layout._id = req.body.id;
-      console.log(layout);
+      layout.PreComplete=PreComplete;
       res.send(layout);
-      // return timers;
+      
     }
   });
 };
@@ -100,8 +105,7 @@ export const submitCrossword = async (req, res) => {
         if (err) {
           console.log("Something wrong when updating data!");
         }
-        console.log("100");
-        console.log(doc);
+        
       }
     );
 
@@ -117,19 +121,19 @@ export const submitCrossword = async (req, res) => {
             time: row.totaltime,
           };
         });
-        console.log("115");
+        
         console.log(t);
         res.send(t);
       }
-      console.log("100");
-      // console.log(doc);
+      
+     
     }
   );
 
 }
 else
 {
-  // let date = new Date()
+  
   const mytime = new timer({
     startdate: null,
     starttime: "0",
