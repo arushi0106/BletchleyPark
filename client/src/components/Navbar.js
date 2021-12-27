@@ -54,6 +54,9 @@ const Navbar = () => {
               variant="h6"
               component="div"
               sx={{ flexGrow: 1 }}
+              onClick={() => {
+                navigate("/");
+              }}
             >
               Bletchley Park
             </Typography>

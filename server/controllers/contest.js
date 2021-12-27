@@ -18,41 +18,56 @@ let url =
     "/" +
     day +
     ".json";
-    const mycrossword = new Crossword({
-      title: url,
-      privacy: "0",
-      words: [],
-      userid: "admin",
-      username:"admin",
-      isContest: true,
-    });
-    
-    await mycrossword.save();
+  const mycrossword = new Crossword({
+    title: url,
+    privacy: "0",
+    words: [],
+    userid: "admin",
+    username: "admin",
+    isContest: true,
+  });
 
+  await mycrossword.save();
+
+  // let mailTransporter = nodemailer.createTransport({
+  //   host: "smtp.gmail.com",
+  //   port: 465,
+  //   secure: true, // use TLS
+  //   auth: {
+  //     user: "bletchleypark@gmail.com",
+  //     pass: process.env.PASSWORD,
+  //   },
+  // });
+
+  // let mailDetails = {
+  //   to: to.email,
+  //   subject: "Bletchley Park | Weekly Contest",
+  //   html: "We invite you to participate in our weekly contest. Go to http://localhost:3000 to compete now.",
+  // };
+
+  // mailTransporter.sendMail(mailDetails, function (err, data) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  // });
 });
 
-export const getAllContest =  (req, res) => {
-  let cross; 
-   Crossword.find({isContest:true}, function (err, Crosswords) {
-       // console.log(Crosswords);
-       if (err) {
-           cross = "error";
-       }
-       else {
-           cross = Crosswords;
-           console.log(cross);
-           res.send(cross);
-       }
-       
+export const getAllContest = (req, res) => {
+  let cross;
+  Crossword.find({ isContest: true }, function (err, Crosswords) {
+    if (err) {
+      cross = "error";
+    } else {
+      cross = Crosswords;
+      res.send(cross);
+    }
+  });
+};
 
-   })
-  }
 export const getContest = async (req, res) => {
   // const date = new Date();
   const response = await fetch(url);
   var data = await response.json();
-  console.log(data);
-
   const l = data.size.cols;
   const w = data.size.rows;
   let layout = {};

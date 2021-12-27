@@ -1,10 +1,15 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
+  title: {
+    paddingTop: "15rem",
+    color: "#00b894",
+  },
   container: {
-    paddingTop: "4rem",
+    padding: "4rem",
     color: "#00b894",
     display: "flex",
+    // flexDirection: "row-reverse",
   },
   special: {
     backgroundColor: "white",
@@ -12,8 +17,10 @@ export default makeStyles((theme) => ({
     borderRadius: "10px",
     marginBottom: "10px",
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: "#00b894",
+  imageA: {
+    paddingLeft: "5rem",
+  },
+  imageB: {
+    paddingRight: "5rem",
   },
 }));

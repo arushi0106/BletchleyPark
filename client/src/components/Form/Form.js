@@ -3,17 +3,23 @@ import React, { useEffect, useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
 import { Container, FormHelperText } from "@mui/material";
 import Select from "@mui/material/Select";
-import { Grid, Box, Button, Paper } from "@material-ui/core";
+import { Grid, Box, Paper } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { createCrossword } from "../../actions/crossword";
 import useStyles from "./styles";
 import Words from "./Words/Words";
 import { hide } from "@popperjs/core";
 import { useNavigate } from "react-router-dom";
+import {
+  ThemeProvider,
+  createTheme,
+  Typography,
+  Button,
+} from "@material-ui/core";
 
 const Form = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -31,6 +37,11 @@ const Form = () => {
     dispatch(createCrossword({ words, title, accessibiliy, user }));
     history("/dashboard");
   };
+  const z = createTheme({
+    typography: {
+      fontFamily: ["Syncopate", "cursive"].join(","),
+    },
+  });
   const submitTitle = (e) => {
     if (e.keyCode == 13) {
       setTitle(e.target.value);
@@ -61,22 +72,12 @@ const Form = () => {
       >
         <Grid item sm={3} xs={0}></Grid>
         <Grid item sm={6} xs={12}>
-          <Typography variant="h6" textAlign="center">
-            {title}
-          </Typography>
-          <Typography>
-            {words.length > 0 ? (
-              <Container>
-                {words.map((word) => (
-                  <Grid>
-                    {word.answer} &nbsp; &nbsp; {word.clue}
-                  </Grid>
-                ))}
-              </Container>
-            ) : (
-              ``
-            )}
-          </Typography>
+          <ThemeProvider theme={z}>
+            <Typography variant="h6" className={classes.text}>
+              {title}
+            </Typography>
+          </ThemeProvider>
+
           {title === "Create your own Crossword" ? (
             <TextField
               id="standard-basic"
@@ -124,6 +125,19 @@ const Form = () => {
               submitHandler={submitHandler}
             />
           )}
+          <Typography>
+            {words.length > 0 ? (
+              <Container>
+                {words.map((word) => (
+                  <Grid>
+                    {word.answer} &nbsp; : &nbsp; {word.clue}
+                  </Grid>
+                ))}
+              </Container>
+            ) : (
+              ``
+            )}
+          </Typography>
         </Grid>
         <Grid item sm={3} xs={0}></Grid>
       </Grid>

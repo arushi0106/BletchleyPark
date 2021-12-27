@@ -1,6 +1,6 @@
 import { Container, Typography } from "@material-ui/core";
 import React, { useEffect } from "react";
-import useStyles from "../styles";
+import useStyles from "./styles";
 import create from "../../images/create.png";
 import practice from "../../images/practice.jpg";
 import compete from "../../images/compete.png";
@@ -18,7 +18,7 @@ const HomePage = () => {
   }, []);
   return (
     <div>
-      <Container className={classes.container}>
+      <Container className={classes.title}>
         <MainText
           variant="h1"
           text="Welcome to Bletchley Park"
@@ -35,8 +35,9 @@ const HomePage = () => {
           text="1. Create your own crosswords, using your words and your own clues.
 "
         />
-
-        {/* <img data-aos="fade-up-right" src={create} className={classes.avatar} /> */}
+        <Container className={classes.image}>
+          <img data-aos="fade-up-right" src={create} />
+        </Container>
       </Container>
 
       <Container className={classes.container}>
@@ -46,7 +47,9 @@ const HomePage = () => {
           made here."
         />
 
-        {/* <img data-aos="fade-up-right" src={practice} /> */}
+        <Container className={classes.image}>
+          <img data-aos="fade-up-left" src={practice} />
+        </Container>
       </Container>
 
       <Container className={classes.container}>
@@ -55,7 +58,9 @@ const HomePage = () => {
           text="3. Compete with all the users in our weekly contests."
         />
 
-        {/* <img data-aos="fade-up-right" src={compete} /> */}
+        <Container className={classes.image}>
+          <img data-aos="fade-up-right" src={compete} />
+        </Container>
       </Container>
 
       <Container className={classes.container}>
@@ -63,8 +68,9 @@ const HomePage = () => {
           variant="h5"
           text="4. Have fun crossword solving sessions with your friends"
         />
-
-        {/* <img data-aos="fade-up-right" src={friends} /> */}
+        <Container className={classes.image}>
+          <img data-aos="fade-up-left" src={friends} />
+        </Container>{" "}
       </Container>
     </div>
   );
