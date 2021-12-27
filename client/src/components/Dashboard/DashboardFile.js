@@ -31,7 +31,18 @@ const DashboardFile = ({ title, words, crossid, solved }) => {
     },
   });
   const ShowCrossword = () => {
-    dispatch(playCrossword({ title, words, id, Userid, Username, solved }));
+    dispatch(
+      playCrossword({
+        title,
+        words,
+        id,
+        Userid,
+        Username,
+        solved,
+        title,
+        Username,
+      })
+    );
     navigate("/crossword");
   };
 

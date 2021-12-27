@@ -87,13 +87,6 @@ const Navbar = () => {
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={() => navigate("/contest")}
-                  className={classes.button}
-                >
-                  Compete
-                </Button>
-                <Button
-                  color="inherit"
                   onClick={logout}
                   className={classes.button}
                 >

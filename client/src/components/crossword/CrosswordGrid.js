@@ -42,7 +42,9 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       let data = {
         time: time,
         userId: user.result._id,
+        userName: user.result.name,
         crosswordId: crossword._id,
+        isContest: crossword.isContest,
       };
       dispatch(submitCrossword(data));
       setStatus(1);
@@ -56,7 +58,7 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       for (var j = 0; j < crossword.table[i].length; j++) {
         if (table[i][j] !== crossword.table[i][j]) {
           setStatus(0);
-          // return;
+          return;
         }
       }
     }

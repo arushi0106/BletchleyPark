@@ -31,23 +31,29 @@ const MyCrossword = () => {
         <Button
           variant="contained"
           className={classes.submit}
-          onClick={() => exportComponentAsJPEG(componentRef)}
+          onClick={() =>
+            exportComponentAsJPEG(componentRef, { fileName: "Bletchley Park" })
+          }
         >
           Export As JPEG
         </Button>
-        <br />
+        {/* <br /> */}
         <Button
           variant="contained"
           className={classes.submit}
-          onClick={() => exportComponentAsPDF(componentRef)}
+          onClick={() =>
+            exportComponentAsPDF(componentRef, { fileName: "Bletchley Park" })
+          }
         >
           Export As PDF
         </Button>
-        <br />
+        {/* <br /> */}
         <Button
           variant="contained"
           className={classes.submit}
-          onClick={() => exportComponentAsPNG(componentRef)}
+          onClick={() =>
+            exportComponentAsPNG(componentRef, { fileName: "Bletchley Park" })
+          }
         >
           Export As PNG
         </Button>

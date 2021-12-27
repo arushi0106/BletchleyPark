@@ -93,6 +93,7 @@ const Words = ({
               setWords([...words, word]);
               setWord([{}]);
               setEntered(0);
+              setCount(count + 1);
             }
           }}
         />

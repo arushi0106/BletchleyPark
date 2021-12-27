@@ -32,19 +32,19 @@ const Clue = () => {
   return (
     <div>
       <Card className={classes.card}>
-        <CardContent>
+        <CardContent className={classes.cardBody}>
           <Typography variant="h5">Across</Typography>
-          <Typography variant="body2" className={classes.cardBody}>
-            {across}
-          </Typography>
+          {/* <Typography variant="body2" > */}
+          {across}
+          {/* </Typography> */}
         </CardContent>
       </Card>
       <Card className={classes.card}>
-        <CardContent>
+        <CardContent className={classes.cardBody}>
           <Typography variant="h5">Down</Typography>
-          <Typography variant="body2" className={classes.cardBody}>
-            {down}
-          </Typography>
+          {/* <Typography variant="body2" className={classes.cardBody}> */}
+          {down}
+          {/* </Typography> */}
         </CardContent>
       </Card>
     </div>

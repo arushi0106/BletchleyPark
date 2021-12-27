@@ -7,5 +7,6 @@ export default makeStyles(() => ({
     maxHeight: "20rem",
     width: "20rem",
     overflow: "scroll",
+    marginLeft: "auto",
   },
 }));
