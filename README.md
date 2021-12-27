@@ -11,7 +11,6 @@ Bletchley Park is a web development project that is designed and developed by Sr
 ## Table of Contents:
 * [ Features ](#features)
 * [ Technology Stack ](#technologystack)
-* [ Future Plans ](#futureplans)
 * [ Images ](#images)
 * [ Credits ](#credits)
 
@@ -35,17 +34,6 @@ Bletchley Park is a web development project that is designed and developed by Sr
 3. Express.js<br>
 4. MongoDb<br>
 
- ## <a name="futureplans"></a>Future Plans:
- * Allow image & file sharing
- * Allow putting up display picture
- * Giving owner rights in groups
- * Adding screen animations for celebrating, praising etc.
- * Add Chat Banners to alert about new chats
-
-
-## <a name="troubleshooting"></a>Troubleshooting:
- * If you are not able to see the other user then try checking your connection and try using mobile data
- * If you are not able to connect with the other user - go to inspect -> settings -> untick "Enable Java Script Source Maps"
 
 ## <a name="images"></a>Images:
 ![alt text](https://github.com/sreebasu05/engage-keep-in-touch/blob/master/static/images/image-1.png)<br><br>
@@ -54,7 +42,7 @@ Bletchley Park is a web development project that is designed and developed by Sr
 ![alt text](https://github.com/sreebasu05/engage-keep-in-touch/blob/master/static/images/image-4.png)<br><br>
 
 ## <a name="credits"></a>Credits:
-* Mentors - Ms. Pratibha Gaund & Mr Naveen Luhach
 * Developer - [Sreemoyee Basu](https://github.com/sreebasu05)
-
+* Developer - [Arushi Agarwal](https://github.com/arushi0106)
+ * Developer - [Srijan Saxena](https://github.com/srijan-bytes)
 
