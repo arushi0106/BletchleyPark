@@ -1,22 +1,21 @@
 
 import Crossword from "../models/crossword.js"
 
-export const getnewsfeed =  (req, res) => {
+export const getnewsfeed =  (req, res) => {     // for getting newsfeed of user
    let cross; 
     Crossword.find({isContest:false}, function (err, Crosswords) {
-        // console.log(Crosswords);
+        
         if (err) {
             cross = "error";
         }
         else {
             cross = Crosswords;
-            // console.log(cross);
-            res.send(cross);
+            
+            res.send(cross);        // sending crosswords
         }
-        // console.log(cross);
+       
 
 
     })
-    // console.log(cross);
-    // res.send(cross);
+    
 }

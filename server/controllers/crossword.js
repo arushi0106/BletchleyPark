@@ -4,7 +4,7 @@ import timer from "../models/timer.js";
 import User from "../models/user.js";
 import clg from "crossword-layout-generator";
 
-export const createCrossword = async (req, res) => {
+export const createCrossword = async (req, res) => {    // creation of crossword schema when a user create crossword
   const mycrossword = new Crossword({
     title: req.body.title,
     privacy: "0",
@@ -16,8 +16,8 @@ export const createCrossword = async (req, res) => {
   await mycrossword.save();
 };
 
-export const playCrossword = async (req, res) => {
-  let date = new Date();
+export const playCrossword = async (req, res) => {    //when user wants to play a crossword
+  let date = new Date();      
 
   // console.log(date);
   // console.log(req.body);
@@ -33,7 +33,7 @@ export const playCrossword = async (req, res) => {
       clue: w.clue,
     };
   });
-  const layout = await clg.generateLayout(words);
+  const layout = await clg.generateLayout(words);     //layout generated
   console.log(layout);
   let position = Array(layout.rows)
     .fill("")
@@ -47,7 +47,7 @@ export const playCrossword = async (req, res) => {
   // layout.username = Username;
   let time;
   let PreComplete = false;
-  timer.findOne({ userid: userid, crossid: crossid }, function (err, timers) {
+  timer.findOne({ userid: userid, crossid: crossid }, function (err, timers) {    //check if user has already opened the crossword before
     if (err) {
       time = "error";
       console.log("if");
@@ -62,7 +62,7 @@ export const playCrossword = async (req, res) => {
         Username: Username,
       });
       mytime.save();
-      Crossword.findOneAndUpdate(
+      Crossword.findOneAndUpdate(       // chn=anging the number of user who have attempted the crossword
         { _id: crossid },
         { $set: { solved: solved + 1 } },
         { new: true },
@@ -89,7 +89,7 @@ export const playCrossword = async (req, res) => {
   });
 };
 
-export const submitCrossword = async (req, res) => {
+export const submitCrossword = async (req, res) => {      //when submission made by user is correct
   console.log(req.body);
   let userid = req.body.userId;
   let username = req.body.userName;
@@ -97,7 +97,7 @@ export const submitCrossword = async (req, res) => {
   let time = req.body.time;
   let isContest = req.body.isContest;
   console.log(isContest);
-  if (!isContest) {
+  if (!isContest) {     // run when the given crossword is not the part of contest
     timer.findOneAndUpdate(
       { userid: userid, crossid: crosswordid },
       { $set: { totaltime: time, complete: true } },
@@ -123,7 +123,7 @@ export const submitCrossword = async (req, res) => {
         });
 
         console.log(t);
-        res.send(t);
+        res.send(t);        //t contain list of user to be sended to frontend for leaderboard
       }
     });
   } else {

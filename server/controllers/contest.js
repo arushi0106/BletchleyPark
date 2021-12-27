@@ -50,6 +50,7 @@ export const getAllContest = (req, res) => {
   });
 };
 
+// function to get the current contest
 export const getContest = async (req, res) => {
   // const date = new Date();
   mailer("contest", "mithi.basu09@gmail.com");
@@ -60,7 +61,7 @@ export const getContest = async (req, res) => {
   let layout = {};
   let table = [];
   let position = [];
-  for (let i = 0; i < l; i++) {
+  for (let i = 0; i < l; i++) {             //creating the layout for the fetched data
     let row = [],
       pos = [];
     for (let j = 0; j < w; j++) {
@@ -103,5 +104,5 @@ export const getContest = async (req, res) => {
   layout.date = Cdate;
   layout._id = year + month + day;
   layout.isContest = true;
-  res.send(layout);
+  res.send(layout);   //sending layout to frontend
 };
