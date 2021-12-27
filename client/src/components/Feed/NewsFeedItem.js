@@ -31,7 +31,6 @@ const NewsFeedItem = ({ title, words, id, createuser, solved }) => {
   const handleClick = () => {
     setOpen(!open);
   };
-
   const Playcross = () => {
     dispatch(playCrossword({ title, words, id, Userid, Username, solved }));
     navigate("/crossword");
@@ -84,7 +83,7 @@ const NewsFeedItem = ({ title, words, id, createuser, solved }) => {
                     variant="body2"
                     color="text.primary"
                   >
-                    &nbsp; Easy
+                    &nbsp; {words.length<5?"Very Easy":words.length<10?"Easy":words.length<20?"Medium":"Difficult"}
                   </Typography>
                 </React.Fragment>
               }
