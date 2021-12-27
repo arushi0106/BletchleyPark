@@ -2,14 +2,19 @@ import cron from "node-cron";
 import fetch from "node-fetch";
 import mongoose from "mongoose";
 import clg from "crossword-layout-generator";
-import Crossword from "../models/crossword.js"
-import mydate from "../models/contest.js"
+import Crossword from "../models/crossword.js";
+import mydate from "../models/contest.js";
 import timer from "../models/timer.js";
+import { mailer } from "../nodemailer/nodemailer.js";
+import User from "../models/user.js";
 let url =
   "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/1976/01/01.json";
-  let Cdate=new Date('Sun Dec 26 2021 00:00:00 GMT+0530 (India Standard Time)');
-  cron.schedule("0 0 * * 0", async function () {
-    Cdate = new Date();
+let Cdate = new Date("Sun Dec 26 2021 00:00:00 GMT+0530 (India Standard Time)");
+let year = 1976;
+let month = "01";
+let day = "01";
+cron.schedule("0 0 * * 0", async function () {
+  Cdate = new Date();
   url =
     "https://raw.githubusercontent.com/doshea/nyt_crosswords/master/" +
     year +
@@ -28,28 +33,9 @@ let url =
   });
 
   await mycrossword.save();
-
-  // let mailTransporter = nodemailer.createTransport({
-  //   host: "smtp.gmail.com",
-  //   port: 465,
-  //   secure: true, // use TLS
-  //   auth: {
-  //     user: "bletchleypark@gmail.com",
-  //     pass: process.env.PASSWORD,
-  //   },
-  // });
-
-  // let mailDetails = {
-  //   to: to.email,
-  //   subject: "Bletchley Park | Weekly Contest",
-  //   html: "We invite you to participate in our weekly contest. Go to http://localhost:3000 to compete now.",
-  // };
-
-  // mailTransporter.sendMail(mailDetails, function (err, data) {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // });
+  await User.find({}, function (err, users) {
+    users.forEach((user) => mailer("contest", user));
+  });
 });
 
 export const getAllContest = (req, res) => {
@@ -66,6 +52,7 @@ export const getAllContest = (req, res) => {
 
 export const getContest = async (req, res) => {
   // const date = new Date();
+  mailer("contest", "mithi.basu09@gmail.com");
   const response = await fetch(url);
   var data = await response.json();
   const l = data.size.cols;
@@ -113,8 +100,8 @@ export const getContest = async (req, res) => {
   layout.result = result;
   console.log(table);
   console.log(result);
-  layout.date=Cdate;
-  layout._id="contest";
-  layout.isContest=true;
+  layout.date = Cdate;
+  layout._id = year + month + day;
+  layout.isContest = true;
   res.send(layout);
 };

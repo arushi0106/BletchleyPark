@@ -42,7 +42,9 @@ const CrosswordGrid = ({ table, setTable, position, setTimeOn, time }) => {
       let data = {
         time: time,
         userId: user.result._id,
+        userName: user.result.name,
         crosswordId: crossword._id,
+        isContest: crossword.isContest,
       };
       dispatch(submitCrossword(data));
       setStatus(1);

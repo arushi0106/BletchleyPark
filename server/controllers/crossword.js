@@ -24,6 +24,7 @@ export const playCrossword = async (req, res) => {
 
   let userid = req.body.Userid;
   let crossid = req.body.id;
+  let title = req.body.title;
   let Username = req.body.Username;
   let solved = req.body.solved;
   let words = req.body.words.map((w) => {
@@ -42,8 +43,10 @@ export const playCrossword = async (req, res) => {
       position[res.starty - 1][res.startx - 1] = res.position;
   });
   layout.position = position;
+  layout.title = title;
+  // layout.username = Username;
   let time;
-  let PreComplete=false;
+  let PreComplete = false;
   timer.findOne({ userid: userid, crossid: crossid }, function (err, timers) {
     if (err) {
       time = "error";
@@ -72,18 +75,16 @@ export const playCrossword = async (req, res) => {
       );
       layout.date = null;
       layout._id = req.body.id;
-      layout.PreComplete=PreComplete;
+      layout.PreComplete = PreComplete;
       res.send(layout);
     } else {
       time = timers;
       console.log(time);
-      if(time.complete==true)
-      PreComplete=true;
+      if (time.complete == true) PreComplete = true;
       layout.date = timers.startdate;
       layout._id = req.body.id;
-      layout.PreComplete=PreComplete;
+      layout.PreComplete = PreComplete;
       res.send(layout);
-      
     }
   });
 };
@@ -91,7 +92,7 @@ export const playCrossword = async (req, res) => {
 export const submitCrossword = async (req, res) => {
   console.log(req.body);
   let userid = req.body.userId;
-  let username=req.body.userName;
+  let username = req.body.userName;
   let crosswordid = req.body.crosswordId;
   let time = req.body.time;
   let isContest = req.body.isContest;
@@ -105,7 +106,6 @@ export const submitCrossword = async (req, res) => {
         if (err) {
           console.log("Something wrong when updating data!");
         }
-        
       }
     );
 
@@ -121,29 +121,23 @@ export const submitCrossword = async (req, res) => {
             time: row.totaltime,
           };
         });
-        
+
         console.log(t);
         res.send(t);
       }
-      
-     
-    }
-  );
-
-}
-else
-{
-  
-  const mytime = new timer({
-    startdate: null,
-    starttime: "0",
-    totaltime: time,
-    userid: userid,
-    crossid: crosswordid,
-    Username:username,
-    complete:true,
-  });
-  mytime.save();
-  res.send("submitted");
-}
+    });
+  } else {
+    const mytime = new timer({
+      startdate: null,
+      starttime: "0",
+      totaltime: time,
+      userid: userid,
+      crossid: crosswordid,
+      Username: username,
+      complete: true,
+    });
+    mytime.save();
+    console.log(mytime);
+    res.send("submitted");
+  }
 };

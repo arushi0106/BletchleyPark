@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles((theme) => ({
-  container: { paddingTop: "10rem" },
+  container: { paddingTop: "10rem", marginTop: "6px" },
   input: {
     width: "2rem",
     height: "2rem",
@@ -23,11 +23,16 @@ export default makeStyles((theme) => ({
     paddingTop: "10rem",
   },
   submit: {
+    marginTop: "6px",
     margin: "2px",
     backgroundColor: "#00b894",
     color: "white",
     "&:hover": {
       backgroundColor: "#004d40",
     },
+  },
+  main: {
+    textAlign: "center",
+    color: "grey",
   },
 }));

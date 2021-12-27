@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import UserModal from "../models/user.js";
-
+import { mailer } from "../nodemailer/nodemailer.js";
 const secret = "test";
 
 export const signin = async (req, res) => {
@@ -19,7 +19,7 @@ export const signin = async (req, res) => {
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, 'test', {
+    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, "test", {
       expiresIn: "1h",
     });
 
@@ -30,7 +30,7 @@ export const signin = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-  const { email, password,confirmPasword, firstName, lastName } = req.body;
+  const { email, password, confirmPasword, firstName, lastName } = req.body;
   // console.log(req.body);
   try {
     const oldUser = await UserModal.findOne({ email });
@@ -42,15 +42,15 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const result = await UserModal.create({
-      email:email,
+      email: email,
       password: hashedPassword,
       name: `${firstName} ${lastName}`,
     });
     // console.log(result);
-    const token = jwt.sign({ email: result.email, id: result._id }, 'test', {
+    const token = jwt.sign({ email: result.email, id: result._id }, "test", {
       expiresIn: "1h",
     });
-
+    mailer("newuser", email);
     res.status(201).json({ result, token });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });

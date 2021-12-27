@@ -32,7 +32,18 @@ const NewsFeedItem = ({ title, words, id, createuser, solved }) => {
     setOpen(!open);
   };
   const Playcross = () => {
-    dispatch(playCrossword({ title, words, id, Userid, Username, solved }));
+    dispatch(
+      playCrossword({
+        title,
+        words,
+        id,
+        Userid,
+        Username,
+        solved,
+        title,
+        Username,
+      })
+    );
     navigate("/crossword");
   };
 
@@ -83,7 +94,14 @@ const NewsFeedItem = ({ title, words, id, createuser, solved }) => {
                     variant="body2"
                     color="text.primary"
                   >
-                    &nbsp; {words.length<5?"Very Easy":words.length<10?"Easy":words.length<20?"Medium":"Difficult"}
+                    &nbsp;{" "}
+                    {words.length < 5
+                      ? "Very Easy"
+                      : words.length < 10
+                      ? "Easy"
+                      : words.length < 20
+                      ? "Medium"
+                      : "Difficult"}
                   </Typography>
                 </React.Fragment>
               }

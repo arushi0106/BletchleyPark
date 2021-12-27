@@ -16,7 +16,7 @@ const NewsFeedItem = () => {
   const handleClick = () => {
     setOpen(!open);
     dispatch(getContest());
-    navigate("/crossword");
+    navigate("/contest");
   };
   const emphasis = createTheme({
     typography: {
@@ -34,7 +34,7 @@ const NewsFeedItem = () => {
               component="span"
               variant="h3"
             >
-              Weekly Challenge
+              Click here to solve the Weekly Contest
             </Typography>
           </ThemeProvider>
         </ListItemText>
